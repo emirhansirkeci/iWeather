@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+:root {
+  --blue-light: #8FB2F5;
+  --gray-900: #13131A;
+  --gray-800: #16161F;
+  --gray-700: #22222F;
+  --gray-500: #3B3B54;
+  --gray-400: #7F7F98;
+  --gray-300: #ABABC4;
+  --gray-200: #BFBFD4;
+  --gray-100: #FAFAFA;
+  --white: #FFFFFF;
+
+  --input-background: #1E1E29;
+
+  --heading-hg-size: 96px;
+  --heading-hg-line-height: 100%;
+  --heading-hg-weight: 800;
+
+  --heading-xl-size: 48px;
+  --heading-xl-line-height: 120%;
+  --heading-xl-weight: 800;
+
+  --heading-lg-size: 32px;
+  --heading-lg-line-height: 140%;
+  --heading-lg-weight: 600;
+
+  --heading-md-size: 20px; 
+  --heading-md-line-height: 140%;
+  --heading-md-weight: 600; 
+
+  --heading-sm-size: 16px; 
+  --heading-sm-line-height: 140%;
+  --heading-sm-weight: 600; 
+
+  --heading-xs-size: 14px; 
+  --heading-xs-line-height: 140%;
+  --heading-xs-weight: 600;
+
+  --text-lg-size: 20px;
+  --text-lg-line-height: 140%;
+
+  --text-md-size: 16px;
+  --text-md-line-height: 140%;
+
+  --text-sm-size: 14px;
+  --text-sm-line-height: 140%;
+
+  --text-xs-size: 12px;
+  --text-xs-line-height: 140%;
+  --text-xs-weight: 800;
+
+  font-family: Nunito, Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+
+  /* line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424; 
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  */
+}
+
+* {
+  font-family: Nunito, Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+h1, h2, h3,
+h4, h5, h6,
+p {
+  margin: 0;
+}
+
+h1 {
+  font-size: var(--heading-hg-size);
+  font-weight: var(--heading-hg-weight);
+  line-height: var(--heading-hg-line-height)
+}
+
+
+h2 {
+  font-size: var(--heading-xl-size);
+  font-weight: var(--heading-xl-weight);
+  line-height: var(--heading-xl-line-height)
+}
+
+
+h3 {
+  font-size: var(--heading-lg-size);
+  font-weight: var(--heading-lg-weight);
+  line-height: var(--heading-lg-line-height)
+}
+
+h4 {
+  font-size: var(--heading-md-size);
+  font-weight: var(--heading-lg-weight);
+  line-height: var(--heading-lg-line-height);
+}
+
+h5 {
+  font-size: var(--heading-sm-size);
+  font-weight: var(--heading-sm-weight);
+  line-height: var(--heading-sm-line-height)
+}
+
+h6 {
+  font-size: var(--heading-xs-size);
+  font-weight: var(--heading-xs-weight);
+  line-height: var(--heading-xs-line-height);
+}
+
+.text-lg {
+  font-size: 20px;
+  line-height: 140%;
+}
+
+.text-md {
+  font-size: 16px;
+  line-height: 140%;
+}
+
+.text-sm {
+  font-size: 14px;
+  line-height: 140%;
+}
+
+.text-xs {
+  font-size: 12px;
+  line-height: 140%;
+  font-weight: 800;
+}
+
+.text-lg {
+  font-size: 20px;
+  line-height: 140%;
+}
+
+.text-md {
+  font-size: 16px;
+  line-height: 140%;
+}
+
+.text-sm {
+  font-size: 14px;
+  line-height: 140%;
+}
+
+.text-xs {
+  font-size: 12px;
+  line-height: 140%;
+  font-weight: 800;
+}
