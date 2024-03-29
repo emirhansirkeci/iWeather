@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import { getSuggestions } from "../getSuggestions";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 export default function Search() {
   const [suggestions, setSuggestions] = useState([]);
   const [value, setValue] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (value) {
@@ -27,7 +29,9 @@ export default function Search() {
     }
   }, [value]);
 
-  const showForecast = async (location) => {
+  const navigateWithLocation = async (location) => {
+    // [TODO]: Navigate if valid location provided
+
     const url =
       "http://api.weatherapi.com/v1/forecast.json?key=5073225d75e942ef880155404242503&q=" +
       location +
@@ -41,11 +45,27 @@ export default function Search() {
         },
       })
       .then((response) => {
+        navigate("/forecast", {
+          state: {
+            location,
+          },
+        });
+
         console.log(response.data);
       })
       .catch((error) => {
         console.error("There was a problem with the axios operation:", error);
       });
+  };
+
+  const handleSuggestionClick = async (location) => {
+    navigateWithLocation(location);
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      navigateWithLocation(value);
+    }
   };
 
   return (
@@ -54,6 +74,7 @@ export default function Search() {
         <input
           placeholder="Search location"
           onChange={(e) => setValue(e.target.value)}
+          onKeyDown={handleKeyDown}
         />
       </div>
 
@@ -63,7 +84,7 @@ export default function Search() {
             <div
               className="location fade-in"
               key={suggestion.index}
-              onClick={() => showForecast(suggestion.found)}
+              onClick={() => handleSuggestionClick(suggestion.found)}
             >
               <p className="text-md">{suggestion.html}</p>
             </div>

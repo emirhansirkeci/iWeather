@@ -1,6 +1,8 @@
 import "./App.css";
 import Marca from "./assets/Marca.png";
-import Search from "./components/Search";
+import { Routes, Route } from "react-router-dom";
+import Home from "./pages/home/Home";
+import Forecast from "./pages/forecast/Forecast";
 
 function App() {
   return (
@@ -9,14 +11,10 @@ function App() {
         <img src={Marca} />
       </div>
 
-      <div className="welcome-message">
-        <h4>
-          Welcome to <label>TypeWeather</label>
-        </h4>
-        <p className="text-sm">Choose a location to see the weather forecast</p>
-      </div>
-
-      <Search />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/forecast" element={<Forecast />} />
+      </Routes>
     </div>
   );
 }
