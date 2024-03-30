@@ -1,4 +1,4 @@
-import { phosphorIcons } from "../availableAssets";
+import { phosphorIcons } from "../utils/availableAssets";
 
 function Detail({ name, icon, value }) {
   return (

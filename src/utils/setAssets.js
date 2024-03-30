@@ -1,4 +1,4 @@
-import { images, weatherIcons } from "../availableAssets";
+import { images, weatherIcons } from "./availableAssets";
 
 /**
  * @param {Object} current Current weather data.
