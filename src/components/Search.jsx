@@ -32,10 +32,8 @@ export default function Search() {
   const navigateWithLocation = async (location) => {
     // [TODO]: Navigate if valid location provided
 
-    const url =
-      "http://api.weatherapi.com/v1/forecast.json?key=5073225d75e942ef880155404242503&q=" +
-      location +
-      "&days=1&aqi=no&alerts=no";
+    const apiKey = import.meta.env.VITE_WEATHER_API_KEY;
+    const url = `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${location}&days=5&aqi=no&alerts=no`;
 
     axios
       .get(url, {
@@ -47,7 +45,8 @@ export default function Search() {
       .then((response) => {
         navigate("/forecast", {
           state: {
-            location,
+            searchedQuery: location,
+            weatherData: response.data,
           },
         });
 

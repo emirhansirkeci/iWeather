@@ -1,45 +1,27 @@
 import "./forecast.css";
+import { WeatherDetail } from "../../components/WeatherDetail";
+import Card from "../../components/Card";
+import ForecastHero from "../../components/ForecastHero";
+import NextDays from "../../components/NextDays";
+
 import { useLocation } from "react-router-dom";
 
-import Card from "../../components/Card";
-import {
-  WeatherDetail,
-  availableDetails,
-} from "../../components/WeatherDetail";
-import ForecastHero from "../../components/ForecastHero";
-
 export default function Forecast() {
-  const location = useLocation();
-
-  console.log(location.state);
+  const data = useLocation();
+  const weatherData = data.state.weatherData;
 
   return (
     <div className="forecast-wrapper">
       <Card>
-        <ForecastHero
-          name="Istanbul, TR"
-          date="Monday, May 15, 2024"
-          value="28ºc"
-          valueRange="26ºc / 32ºc"
-          status="Few Clouds"
-          backgroundIcon="/src/assets/images/rain-night.png"
-          weatherIcon="/src/assets/weather-icons/weather-rain-night.svg"
-        />
+        <ForecastHero weatherData={weatherData} />
       </Card>
 
       <Card>
-        <div className="weather-details">
-          {availableDetails.map((detail) => {
-            return (
-              <WeatherDetail
-                key={detail.key}
-                name={detail.name}
-                value="26ºc"
-                icon={detail.icon}
-              />
-            );
-          })}
-        </div>
+        <WeatherDetail weatherData={weatherData} />
+      </Card>
+
+      <Card>
+        <NextDays weatherData={weatherData} />
       </Card>
     </div>
   );

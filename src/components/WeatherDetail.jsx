@@ -1,13 +1,12 @@
-export function WeatherDetail({ name, value, icon }) {
+import { phosphorIcons } from "../availableAssets";
+
+function Detail({ name, icon, value }) {
   return (
     <div className="detail">
       <div className="detail-left">
-        <div
-          className="detail-icon"
-          style={{
-            backgroundImage: "url(" + icon + ")",
-          }}
-        ></div>
+        <div className="detail-icon">
+          <img src={icon} />
+        </div>
         <div className="detail-name">
           <h6>{name}</h6>
         </div>
@@ -19,30 +18,42 @@ export function WeatherDetail({ name, value, icon }) {
   );
 }
 
-export const availableDetails = [
-  {
-    key: "thermal-sensation",
-    name: "Thermal sensation",
-    icon: "/src/assets/phosphor-icons/phosphor-thermometer-light.svg",
-  },
-  {
-    key: "probability-of-rain",
-    name: "Probability of rain",
-    icon: "/src/assets/phosphor-icons/phosphor-cloud-rain-light.svg",
-  },
-  {
-    key: "wind-speed",
-    name: "Wind speed",
-    icon: "/src/assets/phosphor-icons/phosphor-wind-light.svg",
-  },
-  {
-    key: "air-humidity",
-    name: "Air humidity",
-    icon: "/src/assets/phosphor-icons/phosphor-drop-light.svg",
-  },
-  {
-    key: "uv-index",
-    name: "UV Index",
-    icon: "/src/assets/phosphor-icons/phosphor-sun-dim-light.svg",
-  },
-];
+export function WeatherDetail({ weatherData }) {
+  const current = weatherData.current;
+  const thermalSensation = current.feelslike_c + "ºc";
+  const probabilityOfRain =
+    weatherData.forecast.forecastday[0].day.daily_chance_of_rain + "%";
+  const windSpeed = current.wind_kph + " km/h";
+  const airHumidity = current.humidity + "%";
+  const uvIndex = current.uv;
+
+  return (
+    <div className="weather-details">
+      <Detail
+        name="Thermal sensation"
+        icon={phosphorIcons.thermalSensation}
+        value={thermalSensation}
+      />
+
+      <Detail
+        name="Probability of rain"
+        icon={phosphorIcons.probabilityOfRain}
+        value={probabilityOfRain}
+      />
+
+      <Detail
+        name="Wind speed"
+        icon={phosphorIcons.windSpeed}
+        value={windSpeed}
+      />
+
+      <Detail
+        name="Air humidity"
+        icon={phosphorIcons.airHumidity}
+        value={airHumidity}
+      />
+
+      <Detail name="Uv index" icon={phosphorIcons.uvIndex} value={uvIndex} />
+    </div>
+  );
+}
