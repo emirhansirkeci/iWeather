@@ -78,11 +78,11 @@ export default function Search() {
       </div>
 
       <div className="locations-wrapper">
-        {suggestions.map((suggestion) => {
+        {suggestions.map((suggestion, index) => {
           return (
             <div
               className="location fade-in"
-              key={suggestion.index}
+              key={index}
               onClick={() => handleSuggestionClick(suggestion.found)}
             >
               <p className="text-md">{suggestion.html}</p>
