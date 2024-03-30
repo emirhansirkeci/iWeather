@@ -64,17 +64,16 @@ body,
 html {
   height: 100vh;
   margin: 0;
-  height: 0;
   color: var(--white);
 }
 
 body {
-  height: 100%;
-  width: 100%;
   padding: 0;
   margin: 0;
-  background: black url("Background.png");
+  background-image: url("Background.png");
   background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
 }
 
 * {
