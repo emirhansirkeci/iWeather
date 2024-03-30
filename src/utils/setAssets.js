@@ -18,6 +18,7 @@ export const getImagesBasedByCondition = (current) => {
       weatherIcon = isDay ? weatherIcons.day.clear : weatherIcons.night.clear;
       break;
     case "overcast":
+    case "cloudy":
       backgroundIcon = isDay ? background.day.cloudy : background.night.cloudy;
       weatherIcon = isDay ? weatherIcons.day.cloudy : weatherIcons.night.cloudy;
       break;
@@ -57,10 +58,11 @@ export const setNextDaysIcons = (days) => {
       case "clear":
         icon = weatherIcons.day.clear;
         break;
-      case "overcast":
+      case "partly cloudy":
         icon = weatherIcons.day.clouds;
         break;
-      case "partly cloudy":
+      case "overcast":
+      case "cloudy":
         icon = weatherIcons.day.cloudy;
         break;
       case "patchy rain nearby":
