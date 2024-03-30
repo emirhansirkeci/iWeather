@@ -1,4 +1,4 @@
-import { images, weatherIcons } from "./availableAssets";
+import { background, weatherIcons } from "./availableAssets";
 
 /**
  * @param {Object} current Current weather data.
@@ -14,23 +14,25 @@ export const getImagesBasedByCondition = (current) => {
   switch (condition) {
     case "sunny":
     case "clear":
-      backgroundIcon = isDay ? images.day.clear : images.night.clear;
+      backgroundIcon = isDay ? background.day.clear : background.night.clear;
       weatherIcon = isDay ? weatherIcons.day.clear : weatherIcons.night.clear;
       break;
     case "overcast":
-      backgroundIcon = isDay ? images.day.cloudy : images.night.cloudy;
+      backgroundIcon = isDay ? background.day.cloudy : background.night.cloudy;
       weatherIcon = isDay ? weatherIcons.day.cloudy : weatherIcons.night.cloudy;
       break;
     case "partly cloudy":
-      backgroundIcon = isDay ? images.day.fewClouds : images.night.fewClouds;
+      backgroundIcon = isDay
+        ? background.day.fewClouds
+        : background.night.fewClouds;
       weatherIcon = isDay ? weatherIcons.day.clouds : weatherIcons.night.clouds;
       break;
     case "patchy rain nearby":
-      backgroundIcon = isDay ? images.day.rain : images.night.rain;
+      backgroundIcon = isDay ? background.day.rain : background.night.rain;
       weatherIcon = isDay ? weatherIcons.day.rain : weatherIcons.night.rain;
       break;
     case "heavy rain":
-      backgroundIcon = isDay ? images.day.storm : images.night.storm;
+      backgroundIcon = isDay ? background.day.storm : background.night.storm;
       weatherIcon = isDay ? weatherIcons.day.storm : weatherIcons.night.storm;
       break;
   }

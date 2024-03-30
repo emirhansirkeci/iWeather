@@ -1,3 +1,5 @@
+import "./Search.css";
+
 import { useEffect, useState } from "react";
 import { getSuggestions } from "../../getSuggestions";
 import { useNavigate } from "react-router-dom";

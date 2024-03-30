@@ -1,3 +1,5 @@
+import "./WelcomeMessage.css";
+
 export default function WelcomeMessage() {
   return (
     <div className="welcome-message">

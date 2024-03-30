@@ -60,6 +60,23 @@
   font-family: Nunito, Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
+body,
+html {
+  height: 100vh;
+  margin: 0;
+  height: 0;
+  color: var(--white);
+}
+
+body {
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  background: black url("Background.png");
+  background-size: cover;
+}
+
 * {
   font-family: Nunito, Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
