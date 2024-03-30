@@ -1,19 +1,11 @@
-import { images, weatherIcons } from "../availableAssets";
-
-const _conditions = [
-  "Sunny",
-  "Overcast",
-  "Partly Cloudy",
-  "Patchy Rain Nearby",
-  "Heavy Rain",
-];
+import { getImagesBasedByCondition } from "../utils/setAssets";
 
 export default function ForecastHero({ weatherData }) {
   const { location } = weatherData;
 
   let locationName = location.name + ", " + location.country;
 
-  if (location.name == location.region) {
+  if (location.name != location.region) {
     locationName =
       location.name + ", " + location.region + " - " + location.country;
   }
@@ -35,16 +27,13 @@ export default function ForecastHero({ weatherData }) {
     day: "numeric",
   });
 
-  // [TODO]: Dynamically change images based on current.condition.text
-  const backgroundIcon = images.night.rain;
-  const weatherIcon = weatherIcons.day.clouds;
-  //
+  const { backgroundIcon, weatherIcon } = getImagesBasedByCondition(current);
 
   return (
     <div
       className="forecast-hero"
       style={{
-        backgroundImage: "url(" + backgroundIcon + ")",
+        backgroundImage: `url("${backgroundIcon}")`,
       }}
     >
       <div className="forecast-hero-top">

@@ -1,4 +1,4 @@
-import { weatherIcons } from "../availableAssets";
+import { setNextDaysIcons } from "../utils/setAssets";
 
 function Day({ name, icon, min, max }) {
   return (
@@ -17,6 +17,7 @@ function Day({ name, icon, min, max }) {
 
 export default function NextDays({ weatherData }) {
   const days = weatherData.forecast.forecastday;
+  setNextDaysIcons(days);
 
   return (
     <div className="next-days">
@@ -27,7 +28,7 @@ export default function NextDays({ weatherData }) {
             name={new Date(data.date).toLocaleDateString("en-US", {
               weekday: "short",
             })}
-            icon={weatherIcons.night.clouds}
+            icon={data.icon}
             min={Math.round(data.day.mintemp_c) + "ºc"}
             max={Math.round(data.day.maxtemp_c) + "ºc"}
           />
