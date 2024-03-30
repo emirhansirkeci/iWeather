@@ -1,4 +1,5 @@
-import "./App.css";
+import "./assets/styles/App.css";
+
 import Marca from "./assets/images/Marca.png";
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
