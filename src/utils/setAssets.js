@@ -33,8 +33,6 @@ export const getImagesBasedByCondition = (current) => {
       backgroundIcon = isDay ? images.day.storm : images.night.storm;
       weatherIcon = isDay ? weatherIcons.day.storm : weatherIcons.night.storm;
       break;
-    default:
-      break;
   }
 
   return {
