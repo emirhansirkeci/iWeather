@@ -79,7 +79,7 @@ export default function Search() {
         />
       </div>
 
-      <div className="locations-wrapper">
+      <div className="locations">
         {suggestions.map((suggestion, index) => {
           return (
             <div
