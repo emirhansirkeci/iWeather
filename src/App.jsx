@@ -1,8 +1,8 @@
 import "./App.css";
 import Marca from "./assets/Marca.png";
 import { Routes, Route } from "react-router-dom";
-import Home from "./pages/home/Home";
-import Forecast from "./pages/forecast/Forecast";
+import Home from "./pages/Home";
+import Forecast from "./pages/Forecast";
 
 function App() {
   return (

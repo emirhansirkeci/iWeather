@@ -1,0 +1,45 @@
+.hero {
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 24px 20px;
+  border-radius: 8px;
+  width: var(--forecast-constant-width);
+  height: 350px;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.hero-top {
+  display: flex;
+  align-items: baseline;
+  flex-direction: column;
+}
+
+.hero-bottom {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.hero-bottom-left {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  align-self: flex-end;
+}
+
+.hero-bottom-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  bottom: -40px;
+  right: -50px;
+}
+
+.hero-bottom-right img {
+  width: 300px;
+}

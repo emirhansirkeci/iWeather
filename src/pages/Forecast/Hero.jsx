@@ -1,4 +1,5 @@
-import { getImagesBasedByCondition } from "../utils/setAssets";
+import "./Hero.css";
+import { getImagesBasedByCondition } from "../../utils/setAssets";
 
 export default function ForecastHero({ weatherData }) {
   const { location } = weatherData;
@@ -31,23 +32,23 @@ export default function ForecastHero({ weatherData }) {
 
   return (
     <div
-      className="forecast-hero"
+      className="hero"
       style={{
         backgroundImage: `url("${backgroundIcon}")`,
       }}
     >
-      <div className="forecast-hero-top">
+      <div className="hero-top">
         <h5 className="heading-sm">{locationName}</h5>
         <label className="text-xs">{date}</label>
       </div>
 
-      <div className="forecast-hero-bottom">
-        <div className="forecast-bottom-left">
+      <div className="hero-bottom">
+        <div className="hero-bottom-left">
           <h2>{current_c + "ºc"}</h2>
           <h5>{minTemp_c + "ºc / " + maxTemp_c + "ºc"}</h5>
           <label className="text-sm">{status}</label>
         </div>
-        <div className="forecast-bottom-right">
+        <div className="hero-bottom-right">
           <img src={weatherIcon} />
         </div>
       </div>

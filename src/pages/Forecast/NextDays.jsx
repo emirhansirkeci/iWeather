@@ -1,4 +1,5 @@
-import { setNextDaysIcons } from "../utils/setAssets";
+import "./NextDays.css";
+import { setNextDaysIcons } from "../../utils/setAssets";
 
 function Day({ name, icon, min, max }) {
   return (

@@ -1,5 +1,5 @@
-import Search from "../../components/Search";
-import WelcomeMessage from "../../components/WelcomeMessage";
+import Search from "./Search";
+import WelcomeMessage from "./WelcomeMessage";
 
 export default function Home() {
   return (

@@ -1,8 +1,8 @@
-import "./forecast.css";
-import { WeatherDetail } from "../../components/WeatherDetail";
+import "./index.css";
+import { WeatherDetails } from "./WeatherDetails";
 import Card from "../../components/Card";
-import ForecastHero from "../../components/ForecastHero";
-import NextDays from "../../components/NextDays";
+import ForecastHero from "./Hero";
+import NextDays from "./NextDays";
 
 import { useLocation } from "react-router-dom";
 
@@ -17,7 +17,7 @@ export default function Forecast() {
       </Card>
 
       <Card>
-        <WeatherDetail weatherData={weatherData} />
+        <WeatherDetails weatherData={weatherData} />
       </Card>
 
       <Card>

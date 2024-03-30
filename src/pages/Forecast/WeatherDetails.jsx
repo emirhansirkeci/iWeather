@@ -1,4 +1,5 @@
-import { phosphorIcons } from "../utils/availableAssets";
+import "./WeatherDetails.css";
+import { phosphorIcons } from "../../utils/availableAssets";
 
 function Detail({ name, icon, value }) {
   return (
@@ -18,7 +19,7 @@ function Detail({ name, icon, value }) {
   );
 }
 
-export function WeatherDetail({ weatherData }) {
+export function WeatherDetails({ weatherData }) {
   const current = weatherData.current;
   const thermalSensation = current.feelslike_c + "ºc";
   const probabilityOfRain =

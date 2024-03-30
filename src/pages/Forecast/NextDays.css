@@ -1,0 +1,24 @@
+.next-days {
+  width: var(--forecast-constant-width);
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 4px;
+}
+
+.next-days .day-name {
+  color: var(--gray-200);
+}
+
+.next-days .day-current {
+  color: var(--gray-100);
+}
+
+.next-days .day-min {
+  color: var(--gray-400);
+}
+
+.next-days .day-icon img {
+  width: 56px;
+  height: 56px;
+}
