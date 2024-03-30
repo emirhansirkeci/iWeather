@@ -43,3 +43,10 @@
 .hero-bottom-right img {
   width: 300px;
 }
+
+@media screen and (max-width: 600px) {
+  .hero-bottom-right {
+    bottom: -40px;
+    right: -80px;
+  }
+}

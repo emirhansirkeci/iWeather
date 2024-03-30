@@ -1,7 +1,8 @@
 import "./assets/styles/App.css";
+import Marca from "./assets/images/Marca.svg";
 
-import Marca from "./assets/images/Marca.png";
 import { Routes, Route } from "react-router-dom";
+
 import Home from "./pages/Home";
 import Forecast from "./pages/Forecast";
 

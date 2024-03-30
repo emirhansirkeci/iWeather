@@ -6,6 +6,10 @@
   gap: 4px;
 }
 
+.next-days .day {
+  text-align: center;
+}
+
 .next-days .day-name {
   color: var(--gray-200);
 }
