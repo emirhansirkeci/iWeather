@@ -1,5 +1,13 @@
 import { images, weatherIcons } from "../availableAssets";
 
+const _conditions = [
+  "Sunny",
+  "Overcast",
+  "Partly Cloudy",
+  "Patchy Rain Nearby",
+  "Heavy Rain",
+];
+
 export default function ForecastHero({ weatherData }) {
   const { location } = weatherData;
 
@@ -50,12 +58,9 @@ export default function ForecastHero({ weatherData }) {
           <h5>{minTemp_c + "ºc / " + maxTemp_c + "ºc"}</h5>
           <label className="text-sm">{status}</label>
         </div>
-        <div
-          className="forecast-bottom-right"
-          style={{
-            backgroundImage: "url(" + weatherIcon + ")",
-          }}
-        ></div>
+        <div className="forecast-bottom-right">
+          <img src={weatherIcon} />
+        </div>
       </div>
     </div>
   );
