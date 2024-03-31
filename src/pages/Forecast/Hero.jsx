@@ -3,6 +3,7 @@ import { getImagesBasedByCondition } from "../../utils/setAssets";
 
 export default function ForecastHero({ weatherData }) {
   const { location } = weatherData;
+  console.log(weatherData);
 
   let locationName = location.name + ", " + location.country;
 

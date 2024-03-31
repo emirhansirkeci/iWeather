@@ -3,15 +3,17 @@ import "./Search.css";
 import { useEffect, useState } from "react";
 import { getSuggestions } from "../../utils/getSuggestions";
 import { useNavigate } from "react-router-dom";
-import { fetchDataAndNavigate } from "../../services/fetchDataAndNavigate";
+import loadingIcon from "../../assets/images/loading.svg";
+import { fetchWeather } from "../../services/api/fetchWeather";
 
 export default function Search() {
   const [suggestions, setSuggestions] = useState([]);
   const [value, setValue] = useState("");
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    if (value) {
+    if (value && !loading) {
       const timeout = setTimeout(() => {
         const results = getSuggestions(value).splice(0, 5);
         console.log(results);
@@ -31,13 +33,31 @@ export default function Search() {
     }
   }, [value]);
 
-  const handleSuggestionClick = async (location) => {
-    fetchDataAndNavigate(location, navigate);
+  const sendRequest = async (location) => {
+    setLoading(true);
+
+    try {
+      const data = await fetchWeather(location);
+      navigate("/forecast", {
+        state: {
+          searchedQuery: location,
+          weatherData: data,
+        },
+      });
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleSuggestionClick = async (location, htmlValue) => {
+    sendRequest(location);
   };
 
   const handleKeyDown = async (e) => {
     if (e.key === "Enter") {
-      fetchDataAndNavigate(value, navigate);
+      sendRequest(value);
     }
   };
 
@@ -49,6 +69,7 @@ export default function Search() {
           onChange={(e) => setValue(e.target.value)}
           onKeyDown={handleKeyDown}
         />
+        {loading ? <img src={loadingIcon} /> : <></>}
       </div>
 
       <div className="locations">
@@ -57,7 +78,9 @@ export default function Search() {
             <div
               className="location fade-in"
               key={index}
-              onClick={() => handleSuggestionClick(suggestion.found)}
+              onClick={() =>
+                handleSuggestionClick(suggestion.found, suggestion.html)
+              }
             >
               <p className="text-md">{suggestion.html}</p>
             </div>
