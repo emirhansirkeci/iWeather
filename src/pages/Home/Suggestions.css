@@ -1,0 +1,35 @@
+.suggestions {
+  margin-top: 8px;
+  box-shadow: 0px 4px 30px 0px rgba(0, 0, 0, 0.4);
+}
+
+.suggestion:first-child {
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.suggestion:last-child {
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.suggestion {
+  cursor: pointer;
+  width: 311px;
+  padding: 16px 20px 16px 20px;
+  border-bottom: 1px solid #1e1e29;
+  background-color: var(--gray-500);
+}
+
+.fade-in {
+  animation: fadein 0.2s;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

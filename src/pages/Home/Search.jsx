@@ -1,37 +1,15 @@
-import "./Search.css";
-
-import { useEffect, useState } from "react";
-import { getSuggestions } from "../../utils/getSuggestions";
+import "./index.css";
+import Input from "./Input";
+import Suggestions from "./Suggestions";
+import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import loadingIcon from "../../assets/images/loading.svg";
 import { fetchWeather } from "../../services/api/fetchWeather";
 
 export default function Search() {
-  const [suggestions, setSuggestions] = useState([]);
   const [value, setValue] = useState("");
-  const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    if (value && !loading) {
-      const timeout = setTimeout(() => {
-        const results = getSuggestions(value).splice(0, 5);
-        console.log(results);
-
-        if (results.length > 0) {
-          setSuggestions(results);
-        } else {
-          setSuggestions([]);
-        }
-      }, 500);
-
-      return () => {
-        clearTimeout(timeout);
-      };
-    } else {
-      setSuggestions([]);
-    }
-  }, [value]);
+  const inputRef = useRef(null);
+  const navigate = useNavigate();
 
   const sendRequest = async (location) => {
     setLoading(true);
@@ -51,42 +29,28 @@ export default function Search() {
     }
   };
 
-  const handleSuggestionClick = async (location, htmlValue) => {
-    sendRequest(location);
-  };
-
   const handleKeyDown = async (e) => {
     if (e.key === "Enter") {
+      e.target.blur();
       sendRequest(value);
     }
   };
 
   return (
     <>
-      <div className="search-section">
-        <input
-          placeholder="Search location"
-          onChange={(e) => setValue(e.target.value)}
-          onKeyDown={handleKeyDown}
-        />
-        {loading ? <img src={loadingIcon} /> : <></>}
-      </div>
+      <Input
+        loading={loading}
+        setValue={setValue}
+        handleKeyDown={handleKeyDown}
+        inputRef={inputRef}
+      />
 
-      <div className="locations">
-        {suggestions.map((suggestion, index) => {
-          return (
-            <div
-              className="location fade-in"
-              key={index}
-              onClick={() =>
-                handleSuggestionClick(suggestion.found, suggestion.html)
-              }
-            >
-              <p className="text-md">{suggestion.html}</p>
-            </div>
-          );
-        })}
-      </div>
+      <Suggestions
+        loading={loading}
+        value={value}
+        sendRequest={sendRequest}
+        inputRef={inputRef}
+      />
     </>
   );
 }
