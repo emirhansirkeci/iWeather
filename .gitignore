@@ -27,3 +27,5 @@ dist-ssr
 data-parser.js
 todo.js
 tr.json
+conditions.json
+weather_conditions.json
