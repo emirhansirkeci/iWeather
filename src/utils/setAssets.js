@@ -6,35 +6,50 @@ import { background, weatherIcons } from "./availableAssets";
  * @description Returns background and weather icons based on weather conditions and whether it is daytime or nighttime.
  */
 export const getImagesBasedByCondition = (current) => {
-  let backgroundIcon, weatherIcon;
   const isDay = current.is_day;
-
   const condition = current.condition.text.trim().toLowerCase();
 
-  switch (condition) {
-    case "sunny":
+  const type = weatherType(condition);
+
+  let backgroundIcon, weatherIcon;
+  switch (type) {
+    case "heavy snow":
+      backgroundIcon = isDay ? background.day.storm : background.night.storm;
+      weatherIcon = isDay
+        ? weatherIcons.day.heavySnow
+        : weatherIcons.night.heavySnow;
+      break;
+    case "snow":
+      backgroundIcon = isDay ? background.day.rain : background.night.rain;
+      weatherIcon = isDay ? weatherIcons.day.snow : weatherIcons.night.snow;
+      break;
+    case "heavy rain":
+      backgroundIcon = isDay ? background.day.storm : background.night.storm;
+      weatherIcon = isDay ? weatherIcons.day.storm : weatherIcons.night.storm;
+      break;
+    case "rain":
+      backgroundIcon = isDay ? background.day.rain : background.night.rain;
+      weatherIcon = isDay ? weatherIcons.day.rain : weatherIcons.night.rain;
+      break;
     case "clear":
       backgroundIcon = isDay ? background.day.clear : background.night.clear;
       weatherIcon = isDay ? weatherIcons.day.clear : weatherIcons.night.clear;
-      break;
-    case "overcast":
-    case "cloudy":
-      backgroundIcon = isDay ? background.day.cloudy : background.night.cloudy;
-      weatherIcon = isDay ? weatherIcons.day.cloudy : weatherIcons.night.cloudy;
       break;
     case "partly cloudy":
       backgroundIcon = isDay
         ? background.day.fewClouds
         : background.night.fewClouds;
-      weatherIcon = isDay ? weatherIcons.day.clouds : weatherIcons.night.clouds;
+      weatherIcon = isDay
+        ? weatherIcons.day.fewClouds
+        : weatherIcons.night.fewClouds;
       break;
-    case "patchy rain nearby":
-      backgroundIcon = isDay ? background.day.rain : background.night.rain;
-      weatherIcon = isDay ? weatherIcons.day.rain : weatherIcons.night.rain;
+    case "cloudy":
+      backgroundIcon = isDay ? background.day.cloudy : background.night.cloudy;
+      weatherIcon = isDay ? weatherIcons.day.cloudy : weatherIcons.night.cloudy;
       break;
-    case "heavy rain":
-      backgroundIcon = isDay ? background.day.storm : background.night.storm;
-      weatherIcon = isDay ? weatherIcons.day.storm : weatherIcons.night.storm;
+    case "fog":
+      backgroundIcon = isDay ? background.day.cloudy : background.night.cloudy;
+      weatherIcon = isDay ? weatherIcons.day.fog : weatherIcons.night.fog;
       break;
   }
 
@@ -51,28 +66,51 @@ export const getImagesBasedByCondition = (current) => {
 export const setNextDaysIcons = (days) => {
   days.map((data) => {
     const condition = data.day.condition.text.trim().toLowerCase();
-    let icon = "";
+    const type = weatherType(condition);
 
-    switch (condition) {
-      case "sunny":
+    let icon = "";
+    switch (type) {
+      case "heavy snow":
+        icon = weatherIcons.day.heavySnow;
+        break;
+      case "snow":
+        icon = weatherIcons.day.snow;
+        break;
+      case "heavy rain":
+        icon = weatherIcons.day.storm;
+        break;
+      case "rain":
+        icon = weatherIcons.day.rain;
+        break;
       case "clear":
         icon = weatherIcons.day.clear;
         break;
       case "partly cloudy":
-        icon = weatherIcons.day.clouds;
+        icon = weatherIcons.day.fewClouds;
         break;
-      case "overcast":
       case "cloudy":
         icon = weatherIcons.day.cloudy;
         break;
-      case "patchy rain nearby":
-        icon = weatherIcons.day.rain;
-        break;
-      case "heavy rain":
-        icon = weatherIcons.day.storm;
+      case "fog":
+        icon = weatherIcons.day.fog;
         break;
     }
 
     data.icon = icon;
   });
+};
+
+const weatherType = (condition) => {
+  const reg = (arr) => new RegExp(arr.join("|")).test(condition);
+
+  if (reg(["heavy snow", "blizzard"])) return "heavy snow";
+  else if (reg(["snow", "sleet", "ice pellets"])) return "snow";
+  else if (reg(["heavy rain", "rain shower", "thundery outbreaks possible"]))
+    return "heavy rain";
+  else if (reg(["rain", "drizzle"])) return "rain";
+  else if (reg(["sunny", "clear"])) return "clear";
+  else if (reg(["partly cloudy"])) return "partly cloudy";
+  else if (reg(["overcast", "cloudy"])) return "cloudy";
+  else if (reg(["fog", "mist"])) return "fog";
+  else return null;
 };

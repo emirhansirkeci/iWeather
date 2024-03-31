@@ -25,8 +25,8 @@ import uvIndex from "../assets/images/phosphor-icons/phosphor-sun-dim-light.svg"
 import weatherClearDay from "../assets/images/weather-icons/weather-clear-day.svg";
 import weatherClearNight from "../assets/images/weather-icons/weather-clear-night.svg";
 
-import weatherCloudsDay from "../assets/images/weather-icons/weather-clouds-day.svg";
-import weatherCloudsNight from "../assets/images/weather-icons/weather-clouds-night.svg";
+import weatherFewCloudsDay from "../assets/images/weather-icons/weather-few-clouds-day.svg";
+import weatherFewCloudsNight from "../assets/images/weather-icons/weather-few-clouds-night.svg";
 
 import weatherCloudyDay from "../assets/images/weather-icons/weather-cloudy-day.svg";
 import weatherCloudyNight from "../assets/images/weather-icons/weather-cloudy-night.svg";
@@ -36,6 +36,15 @@ import weatherRainNight from "../assets/images/weather-icons/weather-rain-night.
 
 import weatherStormDay from "../assets/images/weather-icons/weather-storm-day.svg";
 import weatherStormNight from "../assets/images/weather-icons/weather-storm-night.svg";
+
+import weatherSnowDay from "../assets/images/weather-icons/weather-snow-day.svg";
+import weatherSnowNight from "../assets/images/weather-icons/weather-snow-night.svg";
+
+import weatherHeavySnowDay from "../assets/images/weather-icons/weather-heavy-snow-day.svg";
+import weatherHeavySnowNight from "../assets/images/weather-icons/weather-heavy-snow-night.svg";
+
+import weatherFogDay from "../assets/images/weather-icons/weather-fog-day.svg";
+import weatherFogNight from "../assets/images/weather-icons/weather-fog-night.svg";
 
 export const background = {
   day: {
@@ -57,17 +66,23 @@ export const background = {
 export const weatherIcons = {
   day: {
     clear: weatherClearDay,
-    clouds: weatherCloudsDay,
+    fewClouds: weatherFewCloudsDay,
     cloudy: weatherCloudyDay,
     rain: weatherRainDay,
     storm: weatherStormDay,
+    snow: weatherSnowDay,
+    heavySnow: weatherHeavySnowDay,
+    fog: weatherFogDay,
   },
   night: {
     clear: weatherClearNight,
-    clouds: weatherCloudsNight,
+    fewClouds: weatherFewCloudsNight,
     cloudy: weatherCloudyNight,
     rain: weatherRainNight,
     storm: weatherStormNight,
+    snow: weatherSnowNight,
+    heavySnow: weatherHeavySnowNight,
+    fog: weatherFogNight,
   },
 };
 
