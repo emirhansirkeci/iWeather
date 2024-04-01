@@ -4,7 +4,6 @@ import { setNextDaysIcons } from "../../utils/setAssets";
 export default function NextDays({ weatherData }) {
   const days = weatherData.forecast.forecastday;
   setNextDaysIcons(days);
-  console.log(days);
 
   return (
     <div className="next-days">

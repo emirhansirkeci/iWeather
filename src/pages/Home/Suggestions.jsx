@@ -2,35 +2,31 @@ import "./Suggestions.css";
 
 import { useEffect, useState } from "react";
 import { getSuggestions } from "../../utils/getSuggestions";
+import useDebounce from "../../hooks/useDebounce";
+import { fetchGeo } from "../../services/api/fetchGeo";
 
 export default function Suggestions({
   value,
   setValue,
-  loading,
   sendRequest,
   inputRef,
 }) {
   const [suggestions, setSuggestions] = useState([]);
+  const debouncedValue = useDebounce(value);
 
   useEffect(() => {
-    if (value && !loading) {
-      const timeout = setTimeout(() => {
-        const results = getSuggestions(value).splice(0, 5);
-
-        if (results.length > 0) {
-          setSuggestions(results);
-        } else {
-          setSuggestions([]);
-        }
-      }, 500);
-
-      return () => {
-        clearTimeout(timeout);
+    if (debouncedValue) {
+      const res = async () => {
+        const f = await fetchGeo(debouncedValue);
+        console.log(f);
       };
-    } else {
-      setSuggestions([]);
+
+      res();
+
+      const results = getSuggestions(debouncedValue).splice(0, 5);
+      setSuggestions(results);
     }
-  }, [value]);
+  }, [debouncedValue]);
 
   const handleSuggestion = async (location, htmlValue) => {
     inputRef.current.value = htmlValue;
