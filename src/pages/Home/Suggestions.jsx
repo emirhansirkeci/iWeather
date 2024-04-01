@@ -6,9 +6,10 @@ import useDebounce from "../../hooks/useDebounce";
 
 export default function Suggestions({
   value,
-  setValue,
   sendRequest,
   inputRef,
+  detectedLocation,
+  showSuggestions,
 }) {
   const [suggestions, setSuggestions] = useState([]);
   const debouncedValue = useDebounce(value);
@@ -17,17 +18,40 @@ export default function Suggestions({
     if (debouncedValue) {
       const results = getSuggestions(debouncedValue).splice(0, 5);
       setSuggestions(results);
+    } else {
+      setSuggestions([]);
     }
   }, [debouncedValue]);
 
   const handleSuggestion = async (location, htmlValue) => {
     inputRef.current.value = htmlValue;
-    setValue(location);
-    sendRequest();
+    sendRequest({ location });
   };
+
+  const handleDetectedLocationClick = () => {
+    const { lat, lon, name, country, htmlValue } = detectedLocation;
+    inputRef.current.value = htmlValue;
+    sendRequest({
+      location: `${name}, ${country}`,
+      coords: {
+        lat,
+        lon,
+      },
+    });
+  };
+
+  if (!showSuggestions) return null;
 
   return (
     <div className="suggestions">
+      {detectedLocation ? (
+        <div
+          className="suggestion fade-in"
+          onClick={() => handleDetectedLocationClick()}
+        >
+          <p className="text-md">{detectedLocation.htmlValue}</p>
+        </div>
+      ) : null}
       {suggestions.map((suggestion, index) => {
         return (
           <div

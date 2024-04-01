@@ -2,17 +2,18 @@ import "./Input.css";
 import loadingIcon from "../../assets/images/loading.svg";
 
 export default function Input({
-  value,
   setValue,
   inputRef,
   sendRequest,
   loading,
+  setShowSuggestions,
 }) {
   const handleKeyDown = async (e) => {
+    setShowSuggestions(true);
+
     if (e.key === "Enter") {
       e.target.blur();
-      setValue(e.target.value);
-      sendRequest();
+      sendRequest({ location: e.target.value });
     }
   };
 
