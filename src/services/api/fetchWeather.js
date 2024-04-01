@@ -2,6 +2,8 @@ import axios from "axios";
 
 /**
  * @param {String} location The location to fetch weather data for.
+ * @returns {Promise<Object>} - A promise that resolves to the weather data object.
+ * @throws {Error} - Throws an error if the operation fails.
  * @description Fetches weather data for a given location. Throws an error if the operation fails.
  */
 export async function fetchWeather(location) {
