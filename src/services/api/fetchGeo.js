@@ -1,5 +1,11 @@
 import axios from "axios";
 
+/**
+ * @param {string} location The name of the location to perform geocoding.
+ * @returns {Promise<Object[]>} A promise that resolves to an array of location data objects.
+ * @throws {Error} Throws an error if there's a problem with the axios operation.
+ * @description Perform direct geocoding to retrieve location data based on the provided location name.
+ */
 export async function directGeocoding(location) {
   const devPrefix = " https://cors-anywhere.herokuapp.com/";
   const apiKey = import.meta.env.VITE_OPENWEATHER_API_KEY;
@@ -20,6 +26,13 @@ export async function directGeocoding(location) {
   }
 }
 
+/**
+ * @param {number} lat The latitude of the location.
+ * @param {number} lon The longitude of the location.
+ * @returns {Promise<Object[]>} A promise that resolves to an array of location data objects.
+ * @throws {Error} Throws an error if there's a problem with the axios operation.
+ * @description Perform reverse geocoding to retrieve location data based on the provided latitude and longitude.
+ */
 export async function reverseGeocoding(lat, lon) {
   const devPrefix = " https://cors-anywhere.herokuapp.com/";
   const apiKey = import.meta.env.VITE_OPENWEATHER_API_KEY;
