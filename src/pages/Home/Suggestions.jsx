@@ -32,7 +32,7 @@ export default function Suggestions({
     const { lat, lon, name, country, htmlValue } = detectedLocation;
     inputRef.current.value = htmlValue;
     sendRequest({
-      location: `${name}, ${country}`,
+      location: `${name},${country}`,
       coords: {
         lat,
         lon,

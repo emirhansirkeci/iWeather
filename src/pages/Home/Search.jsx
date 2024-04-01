@@ -4,7 +4,6 @@ import Suggestions from "./Suggestions";
 import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { fetchWeather } from "../../services/api/fetchWeather";
-import { turkishToEnglish } from "../../utils/turkishToEnglish";
 import { directGeocoding, reverseGeocoding } from "../../services/api/fetchGeo";
 
 export default function Search() {
@@ -16,7 +15,7 @@ export default function Search() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    navigator.geolocation.getCurrentPosition(async (res) => {
+    navigator?.geolocation?.getCurrentPosition(async (res) => {
       const location = await reverseGeocoding(
         res.coords.latitude,
         res.coords.longitude
@@ -50,18 +49,28 @@ export default function Search() {
   const sendRequest = async ({ location, coords }) => {
     setLoading(true);
 
+    location = location.trim().split(" ").join(",");
+
     try {
-      let coordinates;
+      let coordinates = {
+        lat: "",
+        lon: "",
+      };
 
       if (!coords) {
         const geoCode = await directGeocoding(location);
-        coordinates = geoCode[0].lat + "," + geoCode[0].lon;
+
+        coordinates = {
+          lat: geoCode[0].lat,
+          lon: geoCode[0].lon,
+        };
       } else {
-        coordinates = coords.lat + "," + coords.lon;
+        coordinates = {
+          lat: coords.lat,
+          lon: coords.lon,
+        };
       }
-      console.log({
-        coordinates,
-      });
+
       const data = await fetchWeather(coordinates);
       navigate("/forecast", {
         state: {
