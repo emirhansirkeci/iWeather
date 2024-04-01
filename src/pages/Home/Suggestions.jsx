@@ -16,7 +16,7 @@ export default function Suggestions({
 
   useEffect(() => {
     if (debouncedValue) {
-      const results = getSuggestions(debouncedValue).splice(0, 5);
+      const results = getSuggestions(debouncedValue);
       setSuggestions(results);
     } else {
       setSuggestions([]);
