@@ -3,7 +3,6 @@ import "./Suggestions.css";
 import { useEffect, useState } from "react";
 import { getSuggestions } from "../../utils/getSuggestions";
 import useDebounce from "../../hooks/useDebounce";
-import { fetchGeo } from "../../services/api/fetchGeo";
 
 export default function Suggestions({
   value,
@@ -16,13 +15,6 @@ export default function Suggestions({
 
   useEffect(() => {
     if (debouncedValue) {
-      const res = async () => {
-        const f = await fetchGeo(debouncedValue);
-        console.log(f);
-      };
-
-      res();
-
       const results = getSuggestions(debouncedValue).splice(0, 5);
       setSuggestions(results);
     }
