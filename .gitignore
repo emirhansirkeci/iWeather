@@ -29,4 +29,3 @@ todo.js
 tr.json
 conditions.json
 weather_conditions.json
-src/services/api/fetchGeo.js
