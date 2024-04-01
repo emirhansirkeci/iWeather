@@ -4,6 +4,7 @@ import Suggestions from "./Suggestions";
 import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { fetchWeather } from "../../services/api/fetchWeather";
+import { turkishToEnglish } from "../../utils/turkishToEnglish";
 
 export default function Search() {
   const [value, setValue] = useState("");
@@ -11,14 +12,16 @@ export default function Search() {
   const inputRef = useRef(null);
   const navigate = useNavigate();
 
-  const sendRequest = async (location) => {
+  const sendRequest = async () => {
     setLoading(true);
 
+    const convertedLocation = turkishToEnglish(value);
+
     try {
-      const data = await fetchWeather(location);
+      const data = await fetchWeather(convertedLocation);
       navigate("/forecast", {
         state: {
-          searchedQuery: location,
+          searchedQuery: value,
           weatherData: data,
         },
       });
@@ -29,25 +32,20 @@ export default function Search() {
     }
   };
 
-  const handleKeyDown = async (e) => {
-    if (e.key === "Enter") {
-      e.target.blur();
-      sendRequest(value);
-    }
-  };
-
   return (
     <>
       <Input
         loading={loading}
+        value={value}
         setValue={setValue}
-        handleKeyDown={handleKeyDown}
+        sendRequest={sendRequest}
         inputRef={inputRef}
       />
 
       <Suggestions
         loading={loading}
         value={value}
+        setValue={setValue}
         sendRequest={sendRequest}
         inputRef={inputRef}
       />

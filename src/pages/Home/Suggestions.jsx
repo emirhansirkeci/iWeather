@@ -3,7 +3,13 @@ import "./Suggestions.css";
 import { useEffect, useState } from "react";
 import { getSuggestions } from "../../utils/getSuggestions";
 
-export default function Suggestions({ value, loading, sendRequest, inputRef }) {
+export default function Suggestions({
+  value,
+  setValue,
+  loading,
+  sendRequest,
+  inputRef,
+}) {
   const [suggestions, setSuggestions] = useState([]);
 
   useEffect(() => {
@@ -28,7 +34,8 @@ export default function Suggestions({ value, loading, sendRequest, inputRef }) {
 
   const handleSuggestion = async (location, htmlValue) => {
     inputRef.current.value = htmlValue;
-    sendRequest(location);
+    setValue(location);
+    sendRequest();
   };
 
   return (

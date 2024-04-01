@@ -1,7 +1,21 @@
 import "./Input.css";
 import loadingIcon from "../../assets/images/loading.svg";
 
-export default function Input({ setValue, handleKeyDown, inputRef, loading }) {
+export default function Input({
+  value,
+  setValue,
+  inputRef,
+  sendRequest,
+  loading,
+}) {
+  const handleKeyDown = async (e) => {
+    if (e.key === "Enter") {
+      e.target.blur();
+      setValue(e.target.value);
+      sendRequest();
+    }
+  };
+
   return (
     <div className="search-location">
       <input
