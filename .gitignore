@@ -22,10 +22,3 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-
-# Later
-data-parser.js
-todo.js
-tr.json
-conditions.json
-weather_conditions.json
