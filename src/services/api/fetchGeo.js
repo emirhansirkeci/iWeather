@@ -53,6 +53,6 @@ export async function reverseGeocoding(lat, lon) {
     return response.data;
   } catch (error) {
     console.error("There was a problem with the axios operation:", error);
-    throw error;
+    throw Error("Location could not be detected automatically.");
   }
 }

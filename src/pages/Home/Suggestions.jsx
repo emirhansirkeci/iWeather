@@ -19,6 +19,9 @@ export default function Suggestions(props) {
         res.coords.longitude
       );
 
+      if (location.length == 0)
+        return console.log("Location could not be detected automatically.");
+
       const parsedResult = {
         ...location[0],
         html: location[0].name + ", " + location[0].country,
