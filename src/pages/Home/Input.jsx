@@ -1,6 +1,7 @@
 import "./Input.css";
 import loadingIcon from "../../assets/images/loading.svg";
 import { useEffect } from "react";
+import toast from "react-hot-toast";
 
 export default function Input(props) {
   const { loading, setValue, inputRef, sendRequest, setShowSuggestions } =
@@ -17,7 +18,11 @@ export default function Input(props) {
   const handleKeyDown = async (e) => {
     setShowSuggestions(true);
 
+    const location = e.target.value.trim();
+
     if (e.key === "Enter") {
+      if (location == "") return toast.error("You must enter a location");
+
       e.target.blur();
       sendRequest({ location: e.target.value });
     }

@@ -2,7 +2,7 @@ import axios from "axios";
 
 /**
  * @param {Object} coordinates The coordinates of the location to fetch weather data for.
- * @returns {Promise<Object>} - A promise that resolves to the weather data object.
+ * @returns {Promise<Object>} A promise that resolves to the weather data object.
  * @throws {Error} - Throws an error if the operation fails.
  * @description Fetches weather data for a given location. Throws an error if the operation fails.
  */
@@ -23,6 +23,6 @@ export async function fetchWeather(coordinates) {
     return response.data;
   } catch (error) {
     console.error("There was a problem with the axios operation:", error);
-    throw error;
+    throw Error("No weather forecasts were found for the specified location");
   }
 }
