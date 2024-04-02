@@ -31,30 +31,39 @@ export function WeatherDetails({ weatherData }) {
   return (
     <div className="weather-details">
       <Detail
+        key="thermal-sensation"
         name="Thermal sensation"
         icon={phosphorIcons.thermalSensation}
         value={thermalSensation}
       />
 
       <Detail
+        key="probability-of-rain"
         name="Probability of rain"
         icon={phosphorIcons.probabilityOfRain}
         value={probabilityOfRain}
       />
 
       <Detail
+        key="wind-speed"
         name="Wind speed"
         icon={phosphorIcons.windSpeed}
         value={windSpeed}
       />
 
       <Detail
+        key="air-humidity"
         name="Air humidity"
         icon={phosphorIcons.airHumidity}
         value={airHumidity}
       />
 
-      <Detail name="Uv index" icon={phosphorIcons.uvIndex} value={uvIndex} />
+      <Detail
+        key="uv-index"
+        name="Uv index"
+        icon={phosphorIcons.uvIndex}
+        value={uvIndex}
+      />
     </div>
   );
 }

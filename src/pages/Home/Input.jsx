@@ -1,13 +1,19 @@
 import "./Input.css";
 import loadingIcon from "../../assets/images/loading.svg";
+import { useEffect } from "react";
 
-export default function Input({
-  setValue,
-  inputRef,
-  sendRequest,
-  loading,
-  setShowSuggestions,
-}) {
+export default function Input(props) {
+  const { loading, setValue, inputRef, sendRequest, setShowSuggestions } =
+    props;
+
+  useEffect(() => {
+    window.addEventListener("click", (e) =>
+      setShowSuggestions(
+        inputRef.current && inputRef.current.contains(e.target)
+      )
+    );
+  }, [inputRef]);
+
   const handleKeyDown = async (e) => {
     setShowSuggestions(true);
 
@@ -25,7 +31,7 @@ export default function Input({
         onKeyDown={handleKeyDown}
         ref={inputRef}
       />
-      {loading ? <img src={loadingIcon} /> : <></>}
+      {loading ? <img src={loadingIcon} /> : null}
     </div>
   );
 }

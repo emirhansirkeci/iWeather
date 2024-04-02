@@ -17,9 +17,9 @@ export default function ForecastHero({ weatherData }) {
   const current = weatherData.current;
 
   const status = current.condition.text;
-  const current_c = Math.round(current.temp_c);
-  const minTemp_c = Math.round(today.mintemp_c);
-  const maxTemp_c = Math.round(today.maxtemp_c);
+  const current_c = current.temp_c;
+  const minTemp_c = today.mintemp_c;
+  const maxTemp_c = today.maxtemp_c;
 
   const dateEpoch = todaysDate;
   const date = new Date(dateEpoch).toLocaleDateString("en-US", {
