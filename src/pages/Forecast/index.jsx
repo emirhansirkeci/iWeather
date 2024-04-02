@@ -5,23 +5,43 @@ import ForecastHero from "./Hero";
 import NextDays from "./NextDays";
 
 import { useLocation } from "react-router-dom";
+import { useState } from "react";
+import { toLongDate } from "../../utils/date";
 
 export default function Forecast() {
   const data = useLocation();
   const weatherData = data.state.weatherData;
 
+  const formattedDate = toLongDate(weatherData.forecast.forecastday[0].date);
+
+  const [days, setDays] = useState(weatherData.forecast.forecastday);
+  const [today, setToday] = useState(weatherData.forecast.forecastday[0].day);
+  const [date, setDate] = useState(formattedDate);
+  const [current, setCurrent] = useState(weatherData.current);
+  const [location, setLocation] = useState(weatherData.location);
+
   return (
     <div className="forecast-wrapper">
       <Card>
-        <ForecastHero weatherData={weatherData} />
+        <ForecastHero
+          weatherData={weatherData}
+          location={location}
+          today={today}
+          date={date}
+          current={current}
+        />
       </Card>
 
       <Card>
-        <WeatherDetails weatherData={weatherData} />
+        <WeatherDetails
+          current={current}
+          today={today}
+          weatherData={weatherData}
+        />
       </Card>
 
       <Card>
-        <NextDays weatherData={weatherData} />
+        <NextDays days={days} weatherData={weatherData} />
       </Card>
     </div>
   );

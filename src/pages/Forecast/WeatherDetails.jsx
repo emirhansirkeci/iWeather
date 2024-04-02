@@ -19,50 +19,42 @@ function Detail({ name, icon, value }) {
   );
 }
 
-export function WeatherDetails({ weatherData }) {
-  const current = weatherData.current;
-  const thermalSensation = current.feelslike_c + "ºc";
-  const probabilityOfRain =
-    weatherData.forecast.forecastday[0].day.daily_chance_of_rain + "%";
-  const windSpeed = current.wind_kph + " km/h";
-  const airHumidity = current.humidity + "%";
-  const uvIndex = current.uv;
-
+export function WeatherDetails({ current, today }) {
   return (
     <div className="weather-details">
       <Detail
         key="thermal-sensation"
         name="Thermal sensation"
         icon={phosphorIcons.thermalSensation}
-        value={thermalSensation}
+        value={current.feelslike_c + "ºc"}
       />
 
       <Detail
         key="probability-of-rain"
         name="Probability of rain"
         icon={phosphorIcons.probabilityOfRain}
-        value={probabilityOfRain}
+        value={today.daily_chance_of_rain + "%"}
       />
 
       <Detail
         key="wind-speed"
         name="Wind speed"
         icon={phosphorIcons.windSpeed}
-        value={windSpeed}
+        value={current.wind_kph + " km/h"}
       />
 
       <Detail
         key="air-humidity"
         name="Air humidity"
         icon={phosphorIcons.airHumidity}
-        value={airHumidity}
+        value={current.humidity + "%"}
       />
 
       <Detail
         key="uv-index"
         name="Uv index"
         icon={phosphorIcons.uvIndex}
-        value={uvIndex}
+        value={current.uv}
       />
     </div>
   );
