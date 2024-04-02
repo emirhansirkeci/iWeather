@@ -12,7 +12,7 @@
     "plaka": 2
   },
   {
-    "name": "afyonkarahi̇sar",
+    "name": "afyonkarahisar",
     "lat": 38.76376,
     "lon": 30.54034,
     "plaka": 3
@@ -42,7 +42,7 @@
     "plaka": 7
   },
   {
-    "name": "artvi̇n",
+    "name": "artvin",
     "lat": 41.1833333,
     "lon": 41.8166667,
     "plaka": 8
@@ -54,25 +54,25 @@
     "plaka": 9
   },
   {
-    "name": "balikesi̇r",
+    "name": "balıkesir",
     "lat": 39.648369,
     "lon": 27.88261,
     "plaka": 10
   },
   {
-    "name": "bi̇leci̇k",
+    "name": "bilecik",
     "lat": 40.150131,
     "lon": 29.983061,
     "plaka": 11
   },
   {
-    "name": "bi̇ngöl",
+    "name": "bingöl",
     "lat": 38.885349,
     "lon": 40.498291,
     "plaka": 12
   },
   {
-    "name": "bi̇tli̇s",
+    "name": "bitlis",
     "lat": 38.4,
     "lon": 42.1166667,
     "plaka": 13
@@ -114,19 +114,19 @@
     "plaka": 19
   },
   {
-    "name": "deni̇zli̇",
+    "name": "denizli",
     "lat": 37.77652,
     "lon": 29.08639,
     "plaka": 20
   },
   {
-    "name": "di̇yarbakır",
+    "name": "diyarbakır",
     "lat": 37.91441,
     "lon": 40.230629,
     "plaka": 21
   },
   {
-    "name": "edi̇rne",
+    "name": "edirne",
     "lat": 41.6666667,
     "lon": 26.5666667,
     "plaka": 22
@@ -138,7 +138,7 @@
     "plaka": 23
   },
   {
-    "name": "erzi̇ncan",
+    "name": "erzincan",
     "lat": 39.75,
     "lon": 39.5,
     "plaka": 24
@@ -150,19 +150,19 @@
     "plaka": 25
   },
   {
-    "name": "eski̇şehi̇r",
+    "name": "eskişehir",
     "lat": 39.784302,
     "lon": 30.51922,
     "plaka": 26
   },
   {
-    "name": "gazi̇antep",
+    "name": "gaziantep",
     "lat": 37.06622,
     "lon": 37.38332,
     "plaka": 27
   },
   {
-    "name": "gi̇resun",
+    "name": "giresun",
     "lat": 40.912811,
     "lon": 38.38953,
     "plaka": 28
@@ -174,7 +174,7 @@
     "plaka": 29
   },
   {
-    "name": "hakkari̇",
+    "name": "hakkari",
     "lat": 37.5833333,
     "lon": 43.7333333,
     "plaka": 30
@@ -192,19 +192,19 @@
     "plaka": 32
   },
   {
-    "name": "mersi̇n",
+    "name": "mersin",
     "lat": 36.8,
     "lon": 34.6333333,
     "plaka": 33
   },
   {
-    "name": "i̇stanbul",
+    "name": "istanbul",
     "lat": 41.00527,
     "lon": 28.97696,
     "plaka": 34
   },
   {
-    "name": "i̇zmi̇r",
+    "name": "izmir",
     "lat": 38.41885,
     "lon": 27.12872,
     "plaka": 35
@@ -222,25 +222,25 @@
     "plaka": 37
   },
   {
-    "name": "kayseri̇",
+    "name": "kayseri",
     "lat": 38.7333333,
     "lon": 35.4833333,
     "plaka": 38
   },
   {
-    "name": "kırklareli̇",
+    "name": "kırklareli",
     "lat": 41.7333333,
     "lon": 27.2166667,
     "plaka": 39
   },
   {
-    "name": "kırşehi̇r",
+    "name": "kırşehir",
     "lat": 39.15,
     "lon": 34.1666667,
     "plaka": 40
   },
   {
-    "name": "kocaeli̇",
+    "name": "kocaeli",
     "lat": 40.8532704,
     "lon": 29.8815203,
     "plaka": 41
@@ -264,7 +264,7 @@
     "plaka": 44
   },
   {
-    "name": "mani̇sa",
+    "name": "manisa",
     "lat": 38.619099,
     "lon": 27.428921,
     "plaka": 45
@@ -276,7 +276,7 @@
     "plaka": 46
   },
   {
-    "name": "mardi̇n",
+    "name": "mardin",
     "lat": 37.3122361,
     "lon": 40.735112,
     "plaka": 47
@@ -294,13 +294,13 @@
     "plaka": 49
   },
   {
-    "name": "nevşehi̇r",
+    "name": "nevşehir",
     "lat": 38.62442,
     "lon": 34.723969,
     "plaka": 50
   },
   {
-    "name": "ni̇ğde",
+    "name": "niğde",
     "lat": 37.9666667,
     "lon": 34.6833333,
     "plaka": 51
@@ -312,7 +312,7 @@
     "plaka": 52
   },
   {
-    "name": "ri̇ze",
+    "name": "rize",
     "lat": 41.02005,
     "lon": 40.523449,
     "plaka": 53
@@ -330,25 +330,25 @@
     "plaka": 55
   },
   {
-    "name": "si̇i̇rt",
+    "name": "siirt",
     "lat": 37.94429,
     "lon": 41.93288,
     "plaka": 56
   },
   {
-    "name": "si̇nop",
+    "name": "sinop",
     "lat": 42.0264222,
     "lon": 35.1550745,
     "plaka": 57
   },
   {
-    "name": "si̇vas",
+    "name": "sivas",
     "lat": 39.747662,
     "lon": 37.017879,
     "plaka": 58
   },
   {
-    "name": "teki̇rdağ",
+    "name": "tekirdağ",
     "lat": 40.9833333,
     "lon": 27.5166667,
     "plaka": 59
@@ -366,7 +366,7 @@
     "plaka": 61
   },
   {
-    "name": "tunceli̇",
+    "name": "tunceli",
     "lat": 39.1079868,
     "lon": 39.5401672,
     "plaka": 62
@@ -468,13 +468,13 @@
     "plaka": 78
   },
   {
-    "name": "kili̇s",
+    "name": "kilis",
     "lat": 36.718399,
     "lon": 37.12122,
     "plaka": 79
   },
   {
-    "name": "osmani̇ye",
+    "name": "osmaniye",
     "lat": 37.06805,
     "lon": 36.261589,
     "plaka": 80

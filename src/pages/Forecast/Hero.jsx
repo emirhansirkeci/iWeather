@@ -7,11 +7,6 @@ export default function ForecastHero({ weatherData }) {
 
   let locationName = location.name + ", " + location.country;
 
-  if (location.name != location.region) {
-    locationName =
-      location.name + ", " + location.region + " - " + location.country;
-  }
-
   const today = weatherData.forecast.forecastday[0].day;
   const todaysDate = weatherData.forecast.forecastday[0].date;
   const current = weatherData.current;
