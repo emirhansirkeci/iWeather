@@ -40,7 +40,7 @@ export default function Suggestions(props) {
     }
   }, [debouncedValue]);
 
-  const handleSuggestion = async (suggestion) => {
+  const handleSuggestionClick = async (suggestion) => {
     const { lat, lon, html } = suggestion;
     inputRef.current.value = html;
 
@@ -81,7 +81,7 @@ export default function Suggestions(props) {
           <div
             className="suggestion fade-in"
             key={index}
-            onClick={() => handleSuggestion(suggestion)}
+            onClick={() => handleSuggestionClick(suggestion)}
           >
             <p className="text-md">{suggestion.html}</p>
           </div>
