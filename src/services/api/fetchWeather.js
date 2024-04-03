@@ -8,7 +8,7 @@ import axios from "axios";
  */
 export async function fetchWeather(coordinates) {
   const apiKey = import.meta.env.VITE_WEATHER_API_KEY;
-  const url = `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${
+  const url = `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${
     coordinates.lat + "," + coordinates.lon
   }&days=5&aqi=no&alerts=no`;
 
