@@ -1,8 +1,4 @@
 import axios from "axios";
-const devPrefix =
-  import.meta.env.MODE == "development"
-    ? "https://cors-anywhere.herokuapp.com/"
-    : "";
 
 /**
  * @param {string} location The name of the location to perform geocoding.
@@ -12,18 +8,10 @@ const devPrefix =
  */
 export async function directGeocoding(location) {
   const apiKey = import.meta.env.VITE_OPENWEATHER_API_KEY;
-  const url = `${devPrefix}https://api.openweathermap.org/geo/1.0/direct?q=${location}&limit=5&appid=${apiKey}`;
+  const url = `https://api.openweathermap.org/geo/1.0/direct?q=${location}&limit=5&appid=${apiKey}`;
 
   try {
-    const response = await axios.get(url, {
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Headers":
-          "Origin, X-Requested-With, Content-Type, Accept",
-      },
-      withCredentials: true,
-    });
+    const response = await axios.get(url);
 
     if (response.data.length == 0)
       throw Error("The specified location was not found");
@@ -44,18 +32,10 @@ export async function directGeocoding(location) {
  */
 export async function reverseGeocoding(lat, lon) {
   const apiKey = import.meta.env.VITE_OPENWEATHER_API_KEY;
-  const url = `${devPrefix}https://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=5&appid=${apiKey}`;
+  const url = `https://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=5&appid=${apiKey}`;
 
   try {
-    const response = await axios.get(url, {
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Headers":
-          "Origin, X-Requested-With, Content-Type, Accept",
-      },
-      withCredentials: true,
-    });
+    const response = await axios.get(url);
 
     return response.data;
   } catch (error) {
