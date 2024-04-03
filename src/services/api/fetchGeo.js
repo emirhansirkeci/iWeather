@@ -22,6 +22,7 @@ export async function directGeocoding(location) {
         "Access-Control-Allow-Headers":
           "Origin, X-Requested-With, Content-Type, Accept",
       },
+      withCredentials: true,
     });
 
     if (response.data.length == 0)
@@ -53,6 +54,7 @@ export async function reverseGeocoding(lat, lon) {
         "Access-Control-Allow-Headers":
           "Origin, X-Requested-With, Content-Type, Accept",
       },
+      withCredentials: true,
     });
 
     return response.data;
