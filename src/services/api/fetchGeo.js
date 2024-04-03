@@ -17,8 +17,10 @@ export async function directGeocoding(location) {
   try {
     const response = await axios.get(url, {
       headers: {
-        "Access-Control-Allow-Origin": "https://iweather-prod.vercel.app/",
+        "Access-Control-Allow-Origin": "*",
         "Content-Type": "application/json",
+        "Access-Control-Allow-Headers":
+          "Origin, X-Requested-With, Content-Type, Accept",
       },
     });
 
@@ -46,8 +48,10 @@ export async function reverseGeocoding(lat, lon) {
   try {
     const response = await axios.get(url, {
       headers: {
-        "Access-Control-Allow-Origin": "https://iweather-prod.vercel.app/",
+        "Access-Control-Allow-Origin": "*",
         "Content-Type": "application/json",
+        "Access-Control-Allow-Headers":
+          "Origin, X-Requested-With, Content-Type, Accept",
       },
     });
 
