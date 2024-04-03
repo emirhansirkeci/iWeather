@@ -12,9 +12,7 @@ export default function ForecastHero({ current, location, today, date }) {
       }}
     >
       <div className="hero-top">
-        <h5 className="heading-sm">
-          {location.name + ", " + location.country}
-        </h5>
+        <h5>{location.name + ", " + location.country}</h5>
         <label className="text-xs">{date}</label>
       </div>
 

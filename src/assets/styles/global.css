@@ -127,42 +127,27 @@ h6 {
 }
 
 .text-lg {
-  font-size: 20px;
-  line-height: 140%;
+  font-size: var(--text-lg-size);
+  line-height: var(--text-lg-line-height);
 }
 
 .text-md {
-  font-size: 16px;
-  line-height: 140%;
+  font-size: var(--text-md-size);
+  line-height: var(--text-md-line-height);
 }
 
 .text-sm {
-  font-size: 14px;
-  line-height: 140%;
+  font-size: var(--text-sm-size);
+  line-height: var(--text-sm-line-height);
 }
 
 .text-xs {
-  font-size: 12px;
-  line-height: 140%;
+  font-size: var(--text-xs-size);
+  line-height: var(--text-xs-line-height);
 }
 
 .text-xs-bold {
-  font-size: 12px;
-  line-height: 140%;
-  font-weight: 800;
-}
-
-.text-lg {
-  font-size: 20px;
-  line-height: 140%;
-}
-
-.text-md {
-  font-size: 16px;
-  line-height: 140%;
-}
-
-.text-sm {
-  font-size: 14px;
-  line-height: 140%;
+  font-size: var(--text-xs-size);
+  line-height: var(--text-xs-line-height);
+  font-weight: var(--text-xs-weight);
 }
