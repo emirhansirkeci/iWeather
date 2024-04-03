@@ -1,4 +1,8 @@
 import axios from "axios";
+const devPrefix =
+  import.meta.env.MODE == "development"
+    ? "https://cors-anywhere.herokuapp.com/"
+    : "";
 
 /**
  * @param {string} location The name of the location to perform geocoding.
@@ -7,7 +11,6 @@ import axios from "axios";
  * @description Perform direct geocoding to retrieve location data based on the provided location name.
  */
 export async function directGeocoding(location) {
-  const devPrefix = " https://cors-anywhere.herokuapp.com/";
   const apiKey = import.meta.env.VITE_OPENWEATHER_API_KEY;
   const url = `${devPrefix}https://api.openweathermap.org/geo/1.0/direct?q=${location}&limit=5&appid=${apiKey}`;
 
@@ -37,10 +40,8 @@ export async function directGeocoding(location) {
  * @description Perform reverse geocoding to retrieve location data based on the provided latitude and longitude.
  */
 export async function reverseGeocoding(lat, lon) {
-  const devPrefix = " https://cors-anywhere.herokuapp.com/";
   const apiKey = import.meta.env.VITE_OPENWEATHER_API_KEY;
-
-  const url = `${devPrefix}http://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=5&appid=${apiKey}`;
+  const url = `${devPrefix}https://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=5&appid=${apiKey}`;
 
   try {
     const response = await axios.get(url, {
