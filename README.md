@@ -4,8 +4,7 @@
 <div align="center">
     <p><i>This application was developed for internship assignment.<br> You can use the links below for UI design and related repository.</i></p>
     <a href="https://www.figma.com/file/CmZupOVTB1WkYfLwElyzLL/iWeather?type=design&node-id=3%3A376&mode=design&t=Fccntqhigcu1L8Xv-1"><img alt="Figma" src="https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white" width="80px"/></a>
-    <a href="https://github.com/React-Staj-2024/staj-2024-assesment"><img alt="GitHub" src="https://img.shields.io/badge/github-%23121011.svg?
-    style=for-the-badge&logo=github&logoColor=white" width="80px"/></a>
+    <a href="https://github.com/React-Staj-2024/staj-2024-assesment"><img alt="GitHub" src="https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white" width="90px"/></a>
     <br>
     <br>
     <img src="screenshot.png">
@@ -52,7 +51,7 @@ You can add new locations to `src/utils/places.json` to work with the autocomple
 
 ```json
 [
-  . . .
+  // . . .
   {
     "name": "osmaniye",
     "lat": 37.06805,
@@ -64,42 +63,4 @@ You can add new locations to `src/utils/places.json` to work with the autocomple
     "lon": 13.404954
   }
 ]
-```
-
-## Grouping Assets
-
-In the src/utils directory, there's a file named `availableAssets.js`. This file simplify the process of managing assets.
-
-Let's explore how it works.
-
-```js
-// availableAssets.js
-
-import weatherHeavySnowDay from "../assets/images/weather-icons/weather-heavy-snow-day.svg";
-import weatherHeavySnowNight from "../assets/images/weather-icons/weather-heavy-snow-night.svg";
-
-// Import other assets as needed...
-
-. . .
-
-export const weatherIcons = {
-  day: {
-    heavySnow: weatherHeavySnowDay,
-  },
-  night: {
-    heavySnow: weatherHeavySnowNight,
-  },
-};
-
-```
-
-Now, you can easily utilize the icons with this straightforward method.
-
-```js
-// anything.js
-
-import weatherIcons from "availableAssets";
-
-let dayIcon = weatherIcons.day.heavySnow;
-let nightIcon = weatherIcons.night.heavySnow;
 ```
