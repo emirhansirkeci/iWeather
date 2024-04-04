@@ -18,6 +18,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/forecast" element={<Forecast />} />
+        <Route path="*" element={<Home />} />
       </Routes>
     </div>
   );
