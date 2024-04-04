@@ -47,19 +47,23 @@ You can add new locations to `src/utils/places.json` to work with the autocomple
 - **lat (required):** The latitude coordinate.
 - **lon (required):** The longitude coordinate.
 
-**For example, let's add Berlin to the list.**
+_For example, let's add Berlin to the list._
 
 ```json
 [
   {
     "name": "osmaniye",
+    "country": "turkey",
     "lat": 37.06805,
     "lon": 36.261589
   },
   {
     "name": "berlin",
+    "country": "germany",
     "lat": 52.520008,
     "lon": 13.404954
   }
 ]
 ```
+
+Now, Berlin will appear as a suggestion like `Berlin - Germany`.
