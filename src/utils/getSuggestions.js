@@ -16,7 +16,12 @@ export const getSuggestions = (value, limit = 5) => {
       name: place.name,
       lat: place.lat,
       lon: place.lon,
-      html: place.name[0].toUpperCase() + place.name.slice(1) + " - Turkey",
+      html:
+        place.name[0].toUpperCase() +
+        place.name.slice(1).toLowerCase() +
+        " - " +
+        place.country[0].toUpperCase() +
+        place.country.slice(1).toLowerCase(),
     });
   });
 
