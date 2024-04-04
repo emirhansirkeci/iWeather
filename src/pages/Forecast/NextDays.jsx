@@ -2,14 +2,14 @@ import "./NextDays.css";
 import { setNextDaysIcons } from "../../utils/setAssets";
 import { toShortDate } from "../../utils/date";
 
-export default function NextDays({ days }) {
+export default function NextDays({ days, setDay }) {
   setNextDaysIcons(days);
 
   return (
     <div className="next-days">
       {days?.map((data, index) => {
         return (
-          <div className="day" key={index}>
+          <div onClick={() => setDay(data)} className="day" key={index}>
             <h6 className="day-name">{toShortDate(data.date)}</h6>
             <div className="day-icon">
               <img src={data.icon} />

@@ -7,6 +7,7 @@ import NextDays from "./NextDays";
 import { useLocation } from "react-router-dom";
 import { useState } from "react";
 import { toLongDate } from "../../utils/date";
+import Chart from "./Chart";
 
 export default function Forecast() {
   const data = useLocation();
@@ -14,6 +15,7 @@ export default function Forecast() {
 
   const formattedDate = toLongDate(weatherData.forecast.forecastday[0].date);
 
+  const [day, setDay] = useState(weatherData.forecast.forecastday[0]);
   const [days, setDays] = useState(weatherData.forecast.forecastday);
   const [today, setToday] = useState(weatherData.forecast.forecastday[0].day);
   const [date, setDate] = useState(formattedDate);
@@ -37,7 +39,11 @@ export default function Forecast() {
       </Card>
 
       <Card>
-        <NextDays days={days} weatherData={weatherData} />
+        <NextDays setDay={setDay} days={days} weatherData={weatherData} />
+      </Card>
+
+      <Card>
+        <Chart day={day} />
       </Card>
     </div>
   );

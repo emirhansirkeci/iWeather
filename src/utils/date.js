@@ -4,6 +4,12 @@ export const toShortDate = (date) => {
   });
 };
 
+export const toDayName = (date) => {
+  return new Date(date).toLocaleDateString("en-US", {
+    weekday: "long",
+  });
+};
+
 export const toLongDate = (date) => {
   return new Date(date).toLocaleDateString("en-US", {
     weekday: "long",

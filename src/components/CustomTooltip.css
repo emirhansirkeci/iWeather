@@ -1,0 +1,10 @@
+.custom-tooltip {
+  background-color: var(--white);
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+.custom-tooltip .temp {
+  color: var(--blue-light);
+  font-weight: bold;
+}

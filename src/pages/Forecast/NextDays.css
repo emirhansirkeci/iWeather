@@ -7,11 +7,22 @@
 }
 
 .next-days .day {
+  cursor: pointer;
   text-align: center;
+  transition: all 0.2s ease;
+}
+
+.next-days .day:hover .day-name {
+  color: var(--blue-light);
+}
+
+.next-days .day:hover {
+  transform: scale(1.1);
 }
 
 .next-days .day-name {
   color: var(--gray-200);
+  transition: all 0.1s ease;
 }
 
 .next-days .day-current {
