@@ -26,7 +26,7 @@ export function WeatherDetails({ current, today }) {
         key="thermal-sensation"
         name="Thermal sensation"
         icon={phosphorIcons.thermalSensation}
-        value={current.feelslike_c + "ºc"}
+        value={Math.round(current.feelslike_c) + "ºc"}
       />
 
       <Detail

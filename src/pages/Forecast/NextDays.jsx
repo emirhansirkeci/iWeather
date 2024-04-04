@@ -15,8 +15,8 @@ export default function NextDays({ days }) {
               <img src={data.icon} />
             </div>
             <div className="day-details">
-              <h6 className="day-min">{data.day.mintemp_c + "ºc"}</h6>
-              <h6 className="day-max">{data.day.maxtemp_c + "ºc"}</h6>
+              <h6 className="day-min">{Math.round(data.day.mintemp_c) + "ºc"}</h6>
+              <h6 className="day-max">{Math.round(data.day.maxtemp_c) + "ºc"}</h6>
             </div>
           </div>
         );
