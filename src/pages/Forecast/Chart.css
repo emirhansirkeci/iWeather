@@ -1,9 +1,3 @@
 .area-chart {
-  width: 400px;
-}
-
-@media screen and (max-width: 600px) {
-  .area-chart {
-    width: var(--forecast-constant-width);
-  }
+  width: var(--forecast-constant-width);
 }
