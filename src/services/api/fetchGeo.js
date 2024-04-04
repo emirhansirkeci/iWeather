@@ -13,8 +13,7 @@ export async function directGeocoding(location) {
   try {
     const response = await axios.get(url);
 
-    if (response.data.length == 0)
-      throw Error("The specified location was not found");
+    if (response.data.length == 0) throw Error("The specified location was not found");
 
     return response.data;
   } catch (error) {

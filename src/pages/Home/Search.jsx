@@ -19,9 +19,7 @@ export default function Search() {
 
     try {
       if (!coords) {
-        const geoCode = await directGeocoding(
-          location.trim().split(" ").join(",")
-        );
+        const geoCode = await directGeocoding(location.trim().split(" ").join(","));
 
         coords = {
           lat: geoCode[0].lat,

@@ -15,9 +15,7 @@ export const getImagesBasedByCondition = (current) => {
   switch (type) {
     case "heavy snow":
       backgroundIcon = isDay ? background.day.storm : background.night.storm;
-      weatherIcon = isDay
-        ? weatherIcons.day.heavySnow
-        : weatherIcons.night.heavySnow;
+      weatherIcon = isDay ? weatherIcons.day.heavySnow : weatherIcons.night.heavySnow;
       break;
     case "snow":
       backgroundIcon = isDay ? background.day.rain : background.night.rain;
@@ -36,12 +34,8 @@ export const getImagesBasedByCondition = (current) => {
       weatherIcon = isDay ? weatherIcons.day.clear : weatherIcons.night.clear;
       break;
     case "partly cloudy":
-      backgroundIcon = isDay
-        ? background.day.fewClouds
-        : background.night.fewClouds;
-      weatherIcon = isDay
-        ? weatherIcons.day.fewClouds
-        : weatherIcons.night.fewClouds;
+      backgroundIcon = isDay ? background.day.fewClouds : background.night.fewClouds;
+      weatherIcon = isDay ? weatherIcons.day.fewClouds : weatherIcons.night.fewClouds;
       break;
     case "cloudy":
       backgroundIcon = isDay ? background.day.cloudy : background.night.cloudy;
@@ -105,8 +99,7 @@ const weatherType = (condition) => {
 
   if (reg(["heavy snow", "blizzard"])) return "heavy snow";
   else if (reg(["snow", "sleet", "ice pellets"])) return "snow";
-  else if (reg(["heavy rain", "rain shower", "thundery outbreaks possible"]))
-    return "heavy rain";
+  else if (reg(["heavy rain", "rain shower", "thundery outbreaks possible"])) return "heavy rain";
   else if (reg(["rain", "drizzle"])) return "rain";
   else if (reg(["sunny", "clear"])) return "clear";
   else if (reg(["partly cloudy"])) return "partly cloudy";

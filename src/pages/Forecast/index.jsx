@@ -33,11 +33,7 @@ export default function Forecast() {
       </Card>
 
       <Card>
-        <WeatherDetails
-          current={current}
-          today={today}
-          weatherData={weatherData}
-        />
+        <WeatherDetails current={current} today={today} weatherData={weatherData} />
       </Card>
 
       <Card>

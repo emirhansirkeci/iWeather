@@ -14,13 +14,9 @@ export default function Suggestions(props) {
 
   useEffect(() => {
     navigator?.geolocation?.getCurrentPosition(async (res) => {
-      const location = await reverseGeocoding(
-        res.coords.latitude,
-        res.coords.longitude
-      );
+      const location = await reverseGeocoding(res.coords.latitude, res.coords.longitude);
 
-      if (location.length == 0)
-        return console.log("Location could not be detected automatically.");
+      if (location.length == 0) return console.log("Location could not be detected automatically.");
 
       const parsedResult = {
         ...location[0],
@@ -69,10 +65,7 @@ export default function Suggestions(props) {
   return (
     <div className="suggestions">
       {detectedLocation ? (
-        <div
-          className="suggestion fade-in"
-          onClick={handleDetectedLocationClick}
-        >
+        <div className="suggestion fade-in" onClick={handleDetectedLocationClick}>
           <p className="text-md">{detectedLocation.html}</p>
         </div>
       ) : null}

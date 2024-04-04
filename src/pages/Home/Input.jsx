@@ -4,14 +4,11 @@ import { useEffect } from "react";
 import toast from "react-hot-toast";
 
 export default function Input(props) {
-  const { loading, setValue, inputRef, sendRequest, setShowSuggestions } =
-    props;
+  const { loading, setValue, inputRef, sendRequest, setShowSuggestions } = props;
 
   useEffect(() => {
     window.addEventListener("click", (e) =>
-      setShowSuggestions(
-        inputRef.current && inputRef.current.contains(e.target)
-      )
+      setShowSuggestions(inputRef.current && inputRef.current.contains(e.target)),
     );
   }, [inputRef]);
 

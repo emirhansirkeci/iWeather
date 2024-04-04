@@ -50,12 +50,7 @@ export function WeatherDetails({ current, today }) {
         value={current.humidity + "%"}
       />
 
-      <Detail
-        key="uv-index"
-        name="Uv index"
-        icon={phosphorIcons.uvIndex}
-        value={current.uv}
-      />
+      <Detail key="uv-index" name="Uv index" icon={phosphorIcons.uvIndex} value={current.uv} />
     </div>
   );
 }
