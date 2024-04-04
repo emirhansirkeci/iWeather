@@ -2,9 +2,9 @@
     <img src="src/assets/images/Marca.svg" width="200px">
 </h3>
 <div align="center">
-    <p><i>This application was developed for internship assignment.<br> You can use the links below for UI design and related repository.</i></p>
-    <a href="https://www.figma.com/file/CmZupOVTB1WkYfLwElyzLL/iWeather?type=design&node-id=3%3A376&mode=design&t=Fccntqhigcu1L8Xv-1"><img alt="Figma" src="https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white" width="80px"/></a>
-    <a href="https://github.com/React-Staj-2024/staj-2024-assesment"><img alt="GitHub" src="https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white" width="90px"/></a>
+    <p><i>This application was developed for internship assignment.<br> You can use the links below to see the UI design at Figma and related GitHub repository.</i></p>
+    <a href="https://www.figma.com/file/CmZupOVTB1WkYfLwElyzLL/iWeather?type=design&node-id=3%3A376&mode=design&t=Fccntqhigcu1L8Xv-1" target="_blank"><img alt="Figma" src="https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white" width="80px"/></a>
+    <a href="https://github.com/React-Staj-2024/staj-2024-assesment"><img alt="GitHub" src="https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white" width="90px" target="_blank"/></a>
     <br>
     <br>
     <img src="screenshot.png">
