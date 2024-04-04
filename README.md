@@ -51,7 +51,6 @@ You can add new locations to `src/utils/places.json` to work with the autocomple
 
 ```json
 [
-  // . . .
   {
     "name": "osmaniye",
     "lat": 37.06805,
