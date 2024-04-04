@@ -4,13 +4,18 @@ import Card from "../../components/Card";
 import ForecastHero from "./Hero";
 import NextDays from "./NextDays";
 
-import { useLocation } from "react-router-dom";
+import { useLocation, Navigate } from "react-router-dom";
 import { useState } from "react";
 import { toLongDate } from "../../utils/date";
 import Chart from "./Chart";
 
 export default function Forecast() {
   const data = useLocation();
+
+  if (data.state === null) {
+    return <Navigate to="/" />;
+  }
+
   const weatherData = data.state.weatherData;
 
   const formattedDate = toLongDate(weatherData.forecast.forecastday[0].date);
