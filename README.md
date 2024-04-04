@@ -21,9 +21,9 @@ Then, obtain API keys from the following websites:
 
 ## Installation
 
-Now we can install our dependencies by running the following command:
-
 ```bash
+git clone emirhansirkeci/iWeather
+cd iWeather
 npm install
 ```
 
@@ -35,7 +35,7 @@ Run the application in development mode.
 npm run dev
 ```
 
-Before running the preview command, it is necessary to build the project. Once the build process is complete, you can run the preview command.
+Preview command can be used to run the application in production mode. Before running the preview command, it is necessary to build the project. Once the build process is complete, you can run the preview command.
 
 ```bash
 npm run build
