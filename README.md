@@ -10,12 +10,6 @@
     <img src="screenshot.png">
 </div>
 
-## Installation
-
-```bash
-npm install
-```
-
 ## Environment Variables
 
 Environment variables must be set for the application to run properly.
@@ -25,21 +19,30 @@ Then, obtain API keys from the following websites:
 1. [Openweathermap](https://openweathermap.org/) helps find the user's location accurately. See details at [Geocoding API](https://openweathermap.org/api/geocoding-api).
 2. [Weatherapi](https://www.weatherapi.com/) provides weather forecasts and current conditions based on the given latitude and longitude coordinates.
 
-## Run Commands
+## Installation
+
+Now we can install our dependencies by running the following command:
+
+```bash
+npm install
+```
+
+## Available Commands
+
+Run the application in development mode.
 
 ```bash
 npm run dev
 ```
 
-```bash
-npm run build
-```
+Before running the preview command, it is necessary to build the project. Once the build process is complete, you can run the preview command.
 
 ```bash
+npm run build
 npm run preview
 ```
 
-## Adding New Places
+## Adding New Locations
 
 You can add new locations to `src/utils/places.json` to work with the autocomplete feature.
 
