@@ -13,7 +13,7 @@
 ## Environment Variables
 
 Environment variables must be set for the application to run properly.
-First, copy the `.env.example` file and paste it as `.env.local.`
+First, copy the `.env.example` file and paste it as `.env.local`.
 Then, obtain API keys from the following websites:
 
 1. [Openweathermap](https://openweathermap.org/) helps find the user's location accurately. See details at [Geocoding API](https://openweathermap.org/api/geocoding-api).
@@ -47,6 +47,7 @@ npm run preview
 You can add new locations to `src/utils/places.json` to work with the autocomplete feature.
 
 - **name (required):** The name of the city.
+- **name (required):** The name of the country.
 - **lat (required):** The latitude coordinate.
 - **lon (required):** The longitude coordinate.
 
