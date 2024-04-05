@@ -47,7 +47,7 @@ npm run preview
 You can add new locations to `src/utils/places.json` to work with the autocomplete feature.
 
 - **name (required):** The name of the city.
-- **name (required):** The name of the country.
+- **country (required):** The name of the country.
 - **lat (required):** The latitude coordinate.
 - **lon (required):** The longitude coordinate.
 
