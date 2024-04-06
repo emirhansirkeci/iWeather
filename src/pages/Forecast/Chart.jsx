@@ -9,20 +9,12 @@ export default function Chart({ day }) {
   const [dayName, setDayName] = useState();
   const [chart, setChart] = useState("temp");
 
-  // [TODO]: aşağıdaki day.hour.forEach kısmında hourly.value > 0 ? true : false
-  const [buttons, setButtons] = useState({
-    rain: false,
-    snow: false,
-    wind: false,
-  });
-
   useEffect(() => {
     const chartData = [];
 
     day.hour.forEach((hourly) => {
       const parsedTime = hourly.time.split(" ")[1];
 
-      // [TODO]: Condition (clear, partly cloudy etc) yazdır
       chartData.push({
         name: parsedTime,
         temp: hourly.temp_c,
