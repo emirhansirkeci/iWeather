@@ -4,7 +4,7 @@ export default function CustomTooltip({ active, payload, label, chart }) {
   if (!active && !payload && !payload.length) return null;
 
   let value = payload[0]?.value;
-  let condition = payload[0]?.payload.condition;
+  let condition = payload[0]?.payload.condition.trim();
   let format = `${"Temperature: " + value + "°C"}`;
 
   if (active && payload && payload.length) {
