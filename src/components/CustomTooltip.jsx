@@ -4,6 +4,7 @@ export default function CustomTooltip({ active, payload, label, chart }) {
   if (!active && !payload && !payload.length) return null;
 
   let value = payload[0]?.value;
+  let condition = payload[0]?.payload.condition;
   let format = `${"Temperature: " + value + "°C"}`;
 
   if (active && payload && payload.length) {
@@ -25,8 +26,8 @@ export default function CustomTooltip({ active, payload, label, chart }) {
 
   return (
     <div className="custom-tooltip">
-      <p className="text-sm">{`${label}`}</p>
-      <div className="temp">{format}</div>
+      <p className="text-sm">{`${label} - ${condition}`}</p>
+      <div className="text-md format">{format}</div>
     </div>
   );
 }

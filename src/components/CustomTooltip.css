@@ -4,7 +4,7 @@
   padding: 10px;
 }
 
-.custom-tooltip .temp {
+.custom-tooltip .format {
   color: var(--blue-light);
   font-weight: bold;
 }
