@@ -1,14 +1,5 @@
 import { useEffect, useState } from "react";
-import {
-  XAxis,
-  YAxis,
-  Tooltip,
-  Legend,
-  AreaChart,
-  Area,
-  CartesianGrid,
-  ResponsiveContainer,
-} from "recharts";
+import { XAxis, YAxis, Tooltip, Legend, AreaChart, Area, ResponsiveContainer } from "recharts";
 import { toDayName } from "../../utils/date";
 import CustomTooltip from "../../components/CustomTooltip";
 import "./Chart.css";
@@ -16,6 +7,7 @@ import "./Chart.css";
 export default function Chart({ day }) {
   const [data, setData] = useState([]);
   const [dayName, setDayName] = useState();
+  const [chart, setChart] = useState("temp");
 
   useEffect(() => {
     const chartData = [];
@@ -26,6 +18,9 @@ export default function Chart({ day }) {
       chartData.push({
         name: parsedTime,
         temp: hourly.temp_c,
+        chanceOfRain: hourly.chance_of_rain,
+        chanceOfSnow: hourly.chance_of_snow,
+        windSpeed: hourly.wind_kph,
       });
     });
 
@@ -44,11 +39,10 @@ export default function Chart({ day }) {
         >
           <Area
             type="monotone"
-            dataKey="temp"
             stroke="var(--blue-light)"
-            fillOpacity={1}
             fill="var(--gray-500)"
             animationDuration={250}
+            dataKey={chart}
           />
           <XAxis className="text-xs" dataKey="name" minTickGap={15} />
           <YAxis className="text-xs" width={30} />
@@ -57,9 +51,24 @@ export default function Chart({ day }) {
             wrapperStyle={{ color: "var(--blue-light)" }}
             payload={[{ value: dayName, type: "line", color: "var(--blue-light)" }]}
           />
-          <Tooltip content={<CustomTooltip />} />
+          <Tooltip content={<CustomTooltip chart={chart} />} />
         </AreaChart>
       </ResponsiveContainer>
+
+      <div className="chart-buttons">
+        <button className="text-xs" onClick={() => setChart("chanceOfRain")}>
+          Chance of Rain
+        </button>
+        <button className="text-xs" onClick={() => setChart("chanceOfSnow")}>
+          Chance of Snow
+        </button>
+        <button className="text-xs" onClick={() => setChart("windSpeed")}>
+          Wind Speed
+        </button>
+        <button className="text-xs" onClick={() => setChart("temp")}>
+          Temperature
+        </button>
+      </div>
     </div>
   );
 }
