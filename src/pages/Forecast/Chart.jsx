@@ -18,11 +18,9 @@ export default function Chart({ day }) {
     const chartData = [];
     // Reset visible buttons
     setVisibleButtons({ rain: false, snow: false });
-    //
 
     // Always show temperature data when the day changes
     setChart("temp");
-    //
 
     day.hour.forEach((hourly) => {
       const chanceOfRain = hourly.chance_of_rain;
@@ -45,7 +43,6 @@ export default function Chart({ day }) {
       if (chanceOfSnow > 0) {
         setVisibleButtons({ visibleButtons, snow: true });
       }
-      //
     });
 
     setData(chartData);
