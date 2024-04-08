@@ -13,15 +13,4 @@
 
 .chart-buttons button {
   flex-grow: 1;
-  cursor: pointer;
-  border: 1px solid var(--gray-500);
-  background-color: transparent;
-  color: var(--gray-300);
-  padding: 8px 16px;
-  border-radius: 6px;
-  transition: all 0.2s ease;
-}
-
-.chart-buttons button:hover {
-  background-color: var(--gray-500);
 }

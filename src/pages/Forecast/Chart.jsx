@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import "./Chart.css";
 import { XAxis, YAxis, Tooltip, Legend, AreaChart, Area, ResponsiveContainer } from "recharts";
+import { useEffect, useState } from "react";
 import { toDayName } from "../../utils/date";
 import CustomTooltip from "../../components/CustomTooltip";
-import "./Chart.css";
+import Button from "../../components/Button";
 
 export default function Chart({ day }) {
   const [data, setData] = useState([]);
@@ -79,21 +80,21 @@ export default function Chart({ day }) {
       </ResponsiveContainer>
 
       <div className="chart-buttons">
-        <button className="text-xs" onClick={() => setChart("temp")}>
+        <Button type="outline" onClick={() => setChart("temp")}>
           Temperature
-        </button>
-        <button className="text-xs" onClick={() => setChart("windSpeed")}>
+        </Button>
+        <Button type="outline" onClick={() => setChart("windSpeed")}>
           Wind Speed
-        </button>
+        </Button>
         {visibleButtons.rain && (
-          <button className="text-xs" onClick={() => setChart("chanceOfRain")}>
+          <Button type="outline" onClick={() => setChart("chanceOfRain")}>
             Chance of Rain
-          </button>
+          </Button>
         )}
         {visibleButtons.snow && (
-          <button className="text-xs" onClick={() => setChart("chanceOfSnow")}>
+          <Button type="outline" onClick={() => setChart("chanceOfSnow")}>
             Chance of Snow
-          </button>
+          </Button>
         )}
       </div>
     </div>
