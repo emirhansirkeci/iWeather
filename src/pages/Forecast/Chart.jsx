@@ -8,21 +8,43 @@ export default function Chart({ day }) {
   const [data, setData] = useState([]);
   const [dayName, setDayName] = useState();
   const [chart, setChart] = useState("temp");
+  const [visibleButtons, setVisibleButtons] = useState({
+    rain: false,
+    snow: false,
+  });
 
   useEffect(() => {
     const chartData = [];
+    // Reset visible buttons
+    setVisibleButtons({ rain: false, snow: false });
+    //
+
+    // Always show temperature data when the day changes
+    setChart("temp");
+    //
 
     day.hour.forEach((hourly) => {
-      const parsedTime = hourly.time.split(" ")[1];
+      const chanceOfRain = hourly.chance_of_rain;
+      const chanceOfSnow = hourly.chance_of_snow;
 
       chartData.push({
-        name: parsedTime,
+        name: hourly.time.split(" ")[1],
         temp: hourly.temp_c,
-        chanceOfRain: hourly.chance_of_rain,
-        chanceOfSnow: hourly.chance_of_snow,
         windSpeed: hourly.wind_kph,
-        condition: hourly.condition.text.trim(),
+        condition: hourly.condition.text,
+        chanceOfRain,
+        chanceOfSnow,
       });
+
+      // If the chance of rain or the chance of snow is greater than 0% at any point, then set the relevant property to true
+      if (chanceOfRain > 0) {
+        setVisibleButtons({ visibleButtons, rain: true });
+      }
+
+      if (chanceOfSnow > 0) {
+        setVisibleButtons({ visibleButtons, snow: true });
+      }
+      //
     });
 
     setData(chartData);
@@ -57,18 +79,22 @@ export default function Chart({ day }) {
       </ResponsiveContainer>
 
       <div className="chart-buttons">
-        <button className="text-xs" onClick={() => setChart("chanceOfRain")}>
-          Chance of Rain
-        </button>
-        <button className="text-xs" onClick={() => setChart("chanceOfSnow")}>
-          Chance of Snow
+        <button className="text-xs" onClick={() => setChart("temp")}>
+          Temperature
         </button>
         <button className="text-xs" onClick={() => setChart("windSpeed")}>
           Wind Speed
         </button>
-        <button className="text-xs" onClick={() => setChart("temp")}>
-          Temperature
-        </button>
+        {visibleButtons.rain && (
+          <button className="text-xs" onClick={() => setChart("chanceOfRain")}>
+            Chance of Rain
+          </button>
+        )}
+        {visibleButtons.snow && (
+          <button className="text-xs" onClick={() => setChart("chanceOfSnow")}>
+            Chance of Snow
+          </button>
+        )}
       </div>
     </div>
   );
