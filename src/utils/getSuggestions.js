@@ -1,4 +1,6 @@
 import places from "./places.json";
+import Fuse from "fuse.js";
+import { prettyString } from "./prettyString";
 
 /**
  * @param {String} value The search value to match suggestions.
@@ -7,23 +9,17 @@ import places from "./places.json";
  * @description Returns suggestions matching the given search value.
  */
 export const getSuggestions = (value, limit = 5) => {
-  const suggestions = [];
-
-  places.forEach((place) => {
-    if (!place.name.startsWith(value.toLowerCase())) return;
-
-    suggestions.push({
-      name: place.name,
-      lat: place.lat,
-      lon: place.lon,
-      html:
-        place.name[0].toUpperCase() +
-        place.name.slice(1).toLowerCase() +
-        " - " +
-        place.country[0].toUpperCase() +
-        place.country.slice(1).toLowerCase(),
-    });
+  const fuse = new Fuse(places, {
+    keys: ["name"],
+    threshold: 0.5,
   });
 
-  return suggestions.splice(0, limit);
+  return fuse
+    .search(value)
+    .slice(0, limit)
+    .map((result) => {
+      const html = `${prettyString(result.item.name)} - ${prettyString(result.item.country)}`;
+
+      return { ...result.item, html };
+    });
 };
