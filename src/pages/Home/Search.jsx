@@ -26,7 +26,6 @@ export default function Search() {
           lon: geoCode[0].lon,
         };
       }
-
       const weatherData = await fetchWeather(coords);
       navigate("/forecast", {
         state: { weatherData },
