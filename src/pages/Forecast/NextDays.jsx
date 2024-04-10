@@ -7,9 +7,9 @@ export default function NextDays({ days, setDay }) {
 
   return (
     <div className="next-days">
-      {days?.map((data, index) => {
+      {days?.map((data) => {
         return (
-          <div onClick={() => setDay(data)} className="day" key={index}>
+          <div onClick={() => setDay(data)} className="day" key={data.date_epoch}>
             <h6 className="day-name">{toShortDate(data.date)}</h6>
             <div className="day-icon">
               <img src={data.icon} />
