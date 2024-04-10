@@ -69,11 +69,11 @@ export default function Suggestions(props) {
           <p className="text-md">{detectedLocation.html}</p>
         </div>
       ) : null}
-      {suggestions.map((suggestion, index) => {
+      {suggestions.map((suggestion) => {
         return (
           <div
             className="suggestion fade-in"
-            key={index}
+            key={suggestion.name}
             onClick={() => handleSuggestionClick(suggestion)}
           >
             <p className="text-md">{suggestion.html}</p>
