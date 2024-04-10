@@ -77,19 +77,19 @@ export default function Chart({ day }) {
       </ResponsiveContainer>
 
       <div className="chart-buttons">
-        <Button type="outline" onClick={() => setChart("temp")}>
+        <Button variant="outline" onClick={() => setChart("temp")}>
           Temperature
         </Button>
-        <Button type="outline" onClick={() => setChart("windSpeed")}>
+        <Button variant="outline" onClick={() => setChart("windSpeed")}>
           Wind Speed
         </Button>
         {visibleButtons.rain && (
-          <Button type="outline" onClick={() => setChart("chanceOfRain")}>
+          <Button variant="outline" onClick={() => setChart("chanceOfRain")}>
             Chance of Rain
           </Button>
         )}
         {visibleButtons.snow && (
-          <Button type="outline" onClick={() => setChart("chanceOfSnow")}>
+          <Button variant="outline" onClick={() => setChart("chanceOfSnow")}>
             Chance of Snow
           </Button>
         )}
