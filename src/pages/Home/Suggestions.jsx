@@ -1,6 +1,6 @@
 import "./Suggestions.css";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { getSuggestions } from "../../utils/getSuggestions";
 import useDebounce from "../../hooks/useDebounce";
 import { reverseGeocoding } from "../../services/api/fetchGeo";
@@ -27,7 +27,7 @@ export default function Suggestions(props) {
     });
   }, []);
 
-  useEffect(() => {
+  useMemo(() => {
     if (debouncedValue) {
       const results = getSuggestions(debouncedValue);
       setSuggestions(results);
