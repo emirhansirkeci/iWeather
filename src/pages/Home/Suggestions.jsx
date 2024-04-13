@@ -2,13 +2,11 @@ import "./Suggestions.css";
 
 import { useEffect, useMemo, useState } from "react";
 import { getSuggestions } from "../../utils/getSuggestions";
-import useDebounce from "../../hooks/useDebounce";
 import { reverseGeocoding } from "../../services/api/fetchGeo";
+import useDebounce from "../../hooks/useDebounce";
 
 export default function Suggestions(props) {
   const { value, sendRequest, showSuggestions, inputRef } = props;
-
-  const [suggestions, setSuggestions] = useState([]);
   const [detectedLocation, setDetectedLocation] = useState(false);
   const debouncedValue = useDebounce(value);
 
@@ -27,13 +25,10 @@ export default function Suggestions(props) {
     });
   }, []);
 
-  useMemo(() => {
-    if (debouncedValue) {
-      const results = getSuggestions(debouncedValue);
-      setSuggestions(results);
-    } else {
-      setSuggestions([]);
-    }
+  const suggestions = useMemo(() => {
+    if (!debouncedValue) return [];
+
+    return getSuggestions(debouncedValue);
   }, [debouncedValue]);
 
   const handleSuggestionClick = async (suggestion) => {
