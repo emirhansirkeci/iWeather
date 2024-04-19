@@ -5,7 +5,7 @@ import ForecastHero from "./Hero";
 import NextDays from "./NextDays";
 
 import { useLocation, Navigate } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toLongDate } from "../../utils/date";
 import Chart from "./Chart";
 
@@ -17,38 +17,32 @@ export default function Forecast() {
   }
 
   const weatherData = data.state.weatherData;
+  const location = weatherData.location.name + ", " + weatherData.location.country;
+  const days = weatherData.forecast.forecastday;
 
-  const formattedDate = toLongDate(weatherData.forecast.forecastday[0].date);
+  const [currentDay, setCurrentDay] = useState(weatherData.forecast.forecastday[0]);
+  const [date, setDate] = useState();
 
-  const [day, setDay] = useState(weatherData.forecast.forecastday[0]);
-  const [days, setDays] = useState(weatherData.forecast.forecastday);
-  const [today, setToday] = useState(weatherData.forecast.forecastday[0].day);
-  const [date, setDate] = useState(formattedDate);
-  const [current, setCurrent] = useState(weatherData.current);
-  const [location, setLocation] = useState(weatherData.location);
+  useEffect(() => {
+    setDate(toLongDate(currentDay.date));
+  }, [currentDay]);
 
   return (
     <div className="forecast-wrapper">
       <Card>
-        <ForecastHero
-          weatherData={weatherData}
-          location={location}
-          today={today}
-          date={date}
-          current={current}
-        />
+        <ForecastHero location={location} currentDay={currentDay} date={date} />
       </Card>
 
       <Card>
-        <WeatherDetails current={current} today={today} weatherData={weatherData} />
+        <WeatherDetails currentDay={currentDay} />
       </Card>
 
       <Card>
-        <NextDays setDay={setDay} days={days} weatherData={weatherData} />
+        <NextDays setCurrentDay={setCurrentDay} days={days} />
       </Card>
 
       <Card>
-        <Chart day={day} />
+        <Chart currentDay={currentDay} />
       </Card>
     </div>
   );

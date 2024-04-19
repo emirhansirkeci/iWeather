@@ -19,38 +19,39 @@ function Detail({ name, icon, value }) {
   );
 }
 
-export function WeatherDetails({ current, today }) {
+export function WeatherDetails({ currentDay }) {
+  const { day } = currentDay;
   return (
     <div className="weather-details">
       <Detail
         key="thermal-sensation"
         name="Thermal sensation"
         icon={phosphorIcons.thermalSensation}
-        value={Math.round(current.feelslike_c) + "ºc"}
+        value={Math.round(day.avgtemp_c) + "ºc"}
       />
 
       <Detail
         key="probability-of-rain"
         name="Probability of rain"
         icon={phosphorIcons.probabilityOfRain}
-        value={today.daily_chance_of_rain + "%"}
+        value={day.daily_chance_of_rain + "%"}
       />
 
       <Detail
         key="wind-speed"
         name="Wind speed"
         icon={phosphorIcons.windSpeed}
-        value={current.wind_kph + " km/h"}
+        value={day.maxwind_kph + " km/h"}
       />
 
       <Detail
         key="air-humidity"
         name="Air humidity"
         icon={phosphorIcons.airHumidity}
-        value={current.humidity + "%"}
+        value={day.avghumidity + "%"}
       />
 
-      <Detail key="uv-index" name="Uv index" icon={phosphorIcons.uvIndex} value={current.uv} />
+      <Detail key="uv-index" name="Uv index" icon={phosphorIcons.uvIndex} value={day.uv} />
     </div>
   );
 }

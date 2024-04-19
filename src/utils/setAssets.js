@@ -5,50 +5,48 @@ import { background, weatherIcons } from "./availableAssets";
  * @returns {Object} An object containing background and weather icons.
  * @description Returns background and weather icons based on weather conditions and whether it is daytime or nighttime.
  */
-export const getImagesBasedByCondition = (current) => {
+export const getAssets = (current) => {
   const isDay = current.is_day;
-  const condition = current.condition.text.trim().toLowerCase();
+  const type = weatherType(current.condition.text);
 
-  const type = weatherType(condition);
-
-  let backgroundIcon, weatherIcon;
+  let backgroundImage, weatherIcon;
   switch (type) {
     case "heavy snow":
-      backgroundIcon = isDay ? background.day.storm : background.night.storm;
+      backgroundImage = isDay ? background.day.storm : background.night.storm;
       weatherIcon = isDay ? weatherIcons.day.heavySnow : weatherIcons.night.heavySnow;
       break;
     case "snow":
-      backgroundIcon = isDay ? background.day.rain : background.night.rain;
+      backgroundImage = isDay ? background.day.rain : background.night.rain;
       weatherIcon = isDay ? weatherIcons.day.snow : weatherIcons.night.snow;
       break;
     case "heavy rain":
-      backgroundIcon = isDay ? background.day.storm : background.night.storm;
+      backgroundImage = isDay ? background.day.storm : background.night.storm;
       weatherIcon = isDay ? weatherIcons.day.storm : weatherIcons.night.storm;
       break;
     case "rain":
-      backgroundIcon = isDay ? background.day.rain : background.night.rain;
+      backgroundImage = isDay ? background.day.rain : background.night.rain;
       weatherIcon = isDay ? weatherIcons.day.rain : weatherIcons.night.rain;
       break;
     case "clear":
-      backgroundIcon = isDay ? background.day.clear : background.night.clear;
+      backgroundImage = isDay ? background.day.clear : background.night.clear;
       weatherIcon = isDay ? weatherIcons.day.clear : weatherIcons.night.clear;
       break;
     case "partly cloudy":
-      backgroundIcon = isDay ? background.day.fewClouds : background.night.fewClouds;
+      backgroundImage = isDay ? background.day.fewClouds : background.night.fewClouds;
       weatherIcon = isDay ? weatherIcons.day.fewClouds : weatherIcons.night.fewClouds;
       break;
     case "cloudy":
-      backgroundIcon = isDay ? background.day.cloudy : background.night.cloudy;
+      backgroundImage = isDay ? background.day.cloudy : background.night.cloudy;
       weatherIcon = isDay ? weatherIcons.day.cloudy : weatherIcons.night.cloudy;
       break;
     case "fog":
-      backgroundIcon = isDay ? background.day.cloudy : background.night.cloudy;
+      backgroundImage = isDay ? background.day.cloudy : background.night.cloudy;
       weatherIcon = isDay ? weatherIcons.day.fog : weatherIcons.night.fog;
       break;
   }
 
   return {
-    backgroundIcon,
+    backgroundImage,
     weatherIcon,
   };
 };
@@ -59,8 +57,7 @@ export const getImagesBasedByCondition = (current) => {
  */
 export const setNextDaysIcons = (days) => {
   days.map((data) => {
-    const condition = data.day.condition.text.trim().toLowerCase();
-    const type = weatherType(condition);
+    const type = weatherType(data.day.condition.text);
 
     let icon = "";
     switch (type) {
@@ -95,6 +92,7 @@ export const setNextDaysIcons = (days) => {
 };
 
 const weatherType = (condition) => {
+  condition = condition.trim().toLowerCase();
   const reg = (arr) => new RegExp(arr.join("|")).test(condition);
 
   if (reg(["heavy snow", "blizzard"])) return "heavy snow";

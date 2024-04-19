@@ -5,7 +5,7 @@ import { toDayName } from "../../utils/date";
 import CustomTooltip from "../../components/CustomTooltip";
 import Button from "../../components/Button";
 
-export default function Chart({ day }) {
+export default function Chart({ currentDay }) {
   const [data, setData] = useState([]);
   const [dayName, setDayName] = useState();
   const [chart, setChart] = useState("temp");
@@ -22,7 +22,7 @@ export default function Chart({ day }) {
     // Always show temperature data when the day changes
     setChart("temp");
 
-    day.hour.forEach((hourly) => {
+    currentDay.hour.forEach((hourly) => {
       const chanceOfRain = hourly.chance_of_rain;
       const chanceOfSnow = hourly.chance_of_snow;
 
@@ -46,8 +46,8 @@ export default function Chart({ day }) {
     });
 
     setData(chartData);
-    setDayName(toDayName(day.date));
-  }, [day]);
+    setDayName(toDayName(currentDay.date));
+  }, [currentDay]);
 
   return (
     <div className="area-chart">
@@ -62,14 +62,15 @@ export default function Chart({ day }) {
             type="monotone"
             stroke="var(--blue-light)"
             fill="var(--gray-500)"
-            animationDuration={250}
             dataKey={chart}
+            isAnimationActive={false}
+            style={{ transition: "all 0.3s ease" }}
           />
           <XAxis className="text-xs" dataKey="name" minTickGap={15} />
           <YAxis className="text-xs" width={30} />
           <Legend
             verticalAlign="top"
-            wrapperStyle={{ color: "var(--blue-light)" }}
+            wrapperStyle={{ color: "var(--blue-light)", top: 0 }}
             payload={[{ value: dayName, type: "line", color: "var(--blue-light)" }]}
           />
           <Tooltip content={<CustomTooltip chart={chart} />} />
@@ -77,19 +78,25 @@ export default function Chart({ day }) {
       </ResponsiveContainer>
 
       <div className="chart-buttons">
-        <Button variant="outline" onClick={() => setChart("temp")}>
+        <Button variant={chart != "temp" && "outline"} onClick={() => setChart("temp")}>
           Temperature
         </Button>
-        <Button variant="outline" onClick={() => setChart("windSpeed")}>
+        <Button variant={chart != "windSpeed" && "outline"} onClick={() => setChart("windSpeed")}>
           Wind Speed
         </Button>
         {visibleButtons.rain && (
-          <Button variant="outline" onClick={() => setChart("chanceOfRain")}>
+          <Button
+            variant={chart != "chanceOfRain" && "outline"}
+            onClick={() => setChart("chanceOfRain")}
+          >
             Chance of Rain
           </Button>
         )}
         {visibleButtons.snow && (
-          <Button variant="outline" onClick={() => setChart("chanceOfSnow")}>
+          <Button
+            variant={chart != "chanceOfSnow" && "outline"}
+            onClick={() => setChart("chanceOfSnow")}
+          >
             Chance of Snow
           </Button>
         )}
