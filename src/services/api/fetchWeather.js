@@ -1,10 +1,10 @@
 import axios from "axios";
 
 /**
+ * Fetches weather data for a given location. Throws an error if the operation fails.
  * @param {Object} coordinates The coordinates of the location to fetch weather data for.
  * @returns {Promise<Object>} A promise that resolves to the weather data object.
  * @throws {Error} - Throws an error if the operation fails.
- * @description Fetches weather data for a given location. Throws an error if the operation fails.
  */
 export async function fetchWeather(coordinates) {
   const apiKey = import.meta.env.VITE_WEATHER_API_KEY;

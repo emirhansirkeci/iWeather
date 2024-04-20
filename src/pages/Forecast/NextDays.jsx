@@ -1,10 +1,7 @@
 import "./NextDays.css";
-import { setNextDaysIcons } from "../../utils/setAssets";
 import { toShortDate } from "../../utils/date";
 
 export default function NextDays({ days, setCurrentDay }) {
-  setNextDaysIcons(days);
-
   return (
     <div className="next-days">
       {days?.map((data) => {

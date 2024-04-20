@@ -3,10 +3,10 @@ import Fuse from "fuse.js";
 import { prettyString } from "./prettyString";
 
 /**
+ * Returns suggestions matching the given search value.
  * @param {String} value The search value to match suggestions.
  * @param {String} limit [limit=5] - The maximum number of suggestions to return.
  * @returns {Array} An array of suggestion objects.
- * @description Returns suggestions matching the given search value.
  */
 export const getSuggestions = (value, limit = 5) => {
   const fuse = new Fuse(places, {

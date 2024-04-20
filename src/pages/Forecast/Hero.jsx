@@ -1,21 +1,11 @@
 import "./Hero.css";
-import { getAssets } from "../../utils/setAssets";
-import { useEffect, useState } from "react";
 
 export default function ForecastHero({ location, currentDay, date }) {
-  const [background, setBackground] = useState(getAssets(currentDay.day).backgroundImage);
-  const [icon, setIcon] = useState(getAssets(currentDay.day).weatherIcon);
-
-  useEffect(() => {
-    setBackground(getAssets(currentDay.day).backgroundImage);
-    setIcon(getAssets(currentDay.day).weatherIcon);
-  }, [currentDay]);
-
   return (
     <div
       className="hero"
       style={{
-        backgroundImage: `url("${background}")`,
+        backgroundImage: `url("${currentDay.backgroundImage}")`,
       }}
     >
       <div className="hero-top">
@@ -37,7 +27,7 @@ export default function ForecastHero({ location, currentDay, date }) {
         <div
           className="hero-bottom-right"
           style={{
-            backgroundImage: `url("${icon}")`,
+            backgroundImage: `url("${currentDay.weatherIcon}")`,
           }}
         ></div>
       </div>
