@@ -1,6 +1,6 @@
 import "./Hero.css";
 
-export default function ForecastHero({ location, currentDay, date }) {
+export default function ForecastHero({ location, currentDay, currentDate }) {
   return (
     <div
       className="hero"
@@ -10,7 +10,7 @@ export default function ForecastHero({ location, currentDay, date }) {
     >
       <div className="hero-top">
         <h5>{location}</h5>
-        <label className="text-xs">{date}</label>
+        <label className="text-xs">{currentDate}</label>
       </div>
 
       <div className="hero-bottom">

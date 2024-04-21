@@ -1,12 +1,18 @@
 import "./NextDays.css";
 import { toShortDate } from "../../utils/date";
 
-export default function NextDays({ days, setCurrentDay }) {
+export default function NextDays({ days, currentDay, setCurrentDay }) {
   return (
     <div className="next-days">
       {days?.map((data) => {
+        const isActive = currentDay.date_epoch == data.date_epoch;
+
         return (
-          <div onClick={() => setCurrentDay(data)} className="day" key={data.date_epoch}>
+          <div
+            onClick={() => setCurrentDay(data)}
+            className={`day ${isActive ? "active" : ""}`.trim()}
+            key={data.date_epoch}
+          >
             <h6 className="day-name">{toShortDate(data.date)}</h6>
             <div className="day-icon">
               <img src={data.icon} />

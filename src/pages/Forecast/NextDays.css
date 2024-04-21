@@ -10,6 +10,8 @@
   cursor: pointer;
   text-align: center;
   transition: all 0.2s ease;
+  padding: 8px 12px;
+  border-radius: 8px;
 }
 
 .next-days .day:hover .day-name {
@@ -36,4 +38,8 @@
 .next-days .day-icon img {
   width: 56px;
   height: 56px;
+}
+
+.next-days .active {
+  background-color: var(--gray-700);
 }

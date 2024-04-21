@@ -21,7 +21,7 @@ export default function Forecast() {
   return (
     <div className="forecast-wrapper">
       <Card>
-        <ForecastHero location={location} currentDay={currentDay} date={currentDate} />
+        <ForecastHero location={location} currentDay={currentDay} currentDate={currentDate} />
       </Card>
 
       <Card>
@@ -29,7 +29,7 @@ export default function Forecast() {
       </Card>
 
       <Card>
-        <NextDays setCurrentDay={setCurrentDay} days={days} />
+        <NextDays currentDay={currentDay} setCurrentDay={setCurrentDay} days={days} />
       </Card>
 
       <Card>
