@@ -1,29 +1,14 @@
 import "./Suggestions.css";
 
-import { useEffect, useMemo, useState } from "react";
+import { useMemo } from "react";
 import { getSuggestions } from "../../utils/getSuggestions";
-import { reverseGeocoding } from "../../services/api/fetchGeo";
 import useDebounce from "../../hooks/useDebounce";
+import useGeoLocation from "../../hooks/useGeoLocation";
 
 export default function Suggestions(props) {
   const { value, sendRequest, showSuggestions, inputRef } = props;
-  const [detectedLocation, setDetectedLocation] = useState(false);
+  const [geoLocation] = useGeoLocation();
   const debouncedValue = useDebounce(value);
-
-  useEffect(() => {
-    navigator?.geolocation?.getCurrentPosition(async (res) => {
-      const location = await reverseGeocoding(res.coords.latitude, res.coords.longitude);
-
-      if (location.length == 0) return console.log("Location could not be detected automatically.");
-
-      const parsedResult = {
-        ...location[0],
-        html: location[0].name + ", " + location[0].country,
-      };
-
-      setDetectedLocation(parsedResult);
-    });
-  }, []);
 
   const suggestions = useMemo(() => {
     if (!debouncedValue) return [];
@@ -31,7 +16,7 @@ export default function Suggestions(props) {
     return getSuggestions(debouncedValue);
   }, [debouncedValue]);
 
-  const handleSuggestionClick = async (suggestion) => {
+  const handleSuggestion = async (suggestion) => {
     const { lat, lon, html } = suggestion;
     inputRef.current.value = html;
 
@@ -43,7 +28,7 @@ export default function Suggestions(props) {
     });
   };
 
-  const handleDetectedLocationClick = () => {
+  const handleGeoLocation = () => {
     const { lat, lon, html } = detectedLocation;
     inputRef.current.value = html;
 
@@ -59,9 +44,9 @@ export default function Suggestions(props) {
 
   return (
     <div className="suggestions">
-      {detectedLocation ? (
-        <div className="suggestion fade-in" onClick={handleDetectedLocationClick}>
-          <p className="text-md">{detectedLocation.html}</p>
+      {geoLocation ? (
+        <div className="suggestion fade-in" onClick={handleGeoLocation}>
+          <p className="text-md">{geoLocation.html}</p>
         </div>
       ) : null}
       {suggestions.map((suggestion) => {
@@ -69,7 +54,7 @@ export default function Suggestions(props) {
           <div
             className="suggestion fade-in"
             key={suggestion.name}
-            onClick={() => handleSuggestionClick(suggestion)}
+            onClick={() => handleSuggestion(suggestion)}
           >
             <p className="text-md">{suggestion.html}</p>
           </div>

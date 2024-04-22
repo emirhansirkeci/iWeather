@@ -1,0 +1,36 @@
+import { useEffect, useState } from "react";
+import { reverseGeocoding } from "../services/api/fetchGeo";
+
+export default function useGeoLocation() {
+  const [geoLocation, setGeoLocation] = useState(null);
+  const [error, setError] = useState({});
+
+  if (!navigator || !navigator?.geolocation)
+    return setError({ code: 4, message: "Geolocation not supported." });
+
+  const successCallback = async (position) => {
+    const location = await reverseGeocoding(position.coords.latitude, position.coords.longitude);
+    if (location.length == 0) return setError({ code: 5, message: "Location not found." });
+
+    const parsedResult = {
+      ...location[0],
+      html: location[0].name + ", " + location[0].country,
+    };
+
+    setGeoLocation(parsedResult);
+  };
+
+  const errorCallback = (error) => {
+    setError(error);
+  };
+
+  const getLocation = () => {
+    navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+  };
+
+  useEffect(() => {
+    getLocation();
+  }, []);
+
+  return [geoLocation, getLocation, error];
+}
