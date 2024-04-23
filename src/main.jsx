@@ -15,7 +15,10 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         reverseOrder={false}
         toastOptions={{
           style: {
-            padding: "16px",
+            borderRadius: "10px",
+            background: "var(--gray-700)",
+            color: "var(--white)",
+            padding: "20px",
           },
         }}
       />
