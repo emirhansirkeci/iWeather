@@ -29,7 +29,7 @@ export default function Suggestions(props) {
   };
 
   const handleGeoLocation = () => {
-    const { lat, lon, html } = detectedLocation;
+    const { lat, lon, html } = geoLocation;
     inputRef.current.value = html;
 
     sendRequest({
