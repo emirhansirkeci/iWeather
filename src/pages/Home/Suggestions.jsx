@@ -13,6 +13,10 @@ export default function Suggestions({ value, sendRequest, showSuggestions, input
     getGeoLocation();
   }, []);
 
+  useEffect(() => {
+    if (showSuggestions) getGeoLocation();
+  }, [showSuggestions]);
+
   const suggestions = useMemo(() => {
     if (!debouncedValue) return [];
 
