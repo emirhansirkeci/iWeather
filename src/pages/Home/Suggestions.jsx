@@ -13,10 +13,6 @@ export default function Suggestions({ value, sendRequest, showSuggestions, input
     getGeoLocation();
   }, []);
 
-  useEffect(() => {
-    if (showSuggestions) getGeoLocation();
-  }, [showSuggestions]);
-
   const suggestions = useMemo(() => {
     if (!debouncedValue) return [];
 
@@ -53,7 +49,7 @@ export default function Suggestions({ value, sendRequest, showSuggestions, input
     <div className="suggestions">
       {geoLocation ? (
         <div className="suggestion fade-in" onClick={handleGeoLocation}>
-          <p className="text-md">{geoLocation.html}</p>
+          <p className="text-md">{geoLocation}</p>
         </div>
       ) : null}
       {suggestions.map((suggestion) => {
