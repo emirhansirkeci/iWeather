@@ -43,3 +43,25 @@
 .next-days .active {
   background-color: var(--gray-700);
 }
+
+@media screen and (max-width: 500px) {
+  .next-days {
+    gap: 0;
+  }
+
+  .next-days .day {
+    padding: 8px 2px;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .next-days {
+    gap: 4px;
+    overflow: scroll;
+    padding: 8px 0;
+  }
+
+  .next-days .day {
+    padding: 8px 12px;
+  }
+}
