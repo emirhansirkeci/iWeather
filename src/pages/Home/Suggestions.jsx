@@ -49,7 +49,7 @@ export default function Suggestions({ value, sendRequest, showSuggestions, input
     <div className="suggestions">
       {geoLocation ? (
         <div className="suggestion fade-in" onClick={handleGeoLocation}>
-          <p className="text-md">{geoLocation}</p>
+          <p className="text-md">{geoLocation.html}</p>
         </div>
       ) : null}
       {suggestions.map((suggestion) => {

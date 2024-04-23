@@ -12,7 +12,12 @@ export default function useGeoLocation() {
     const location = await reverseGeocoding(position.coords.latitude, position.coords.longitude);
     if (location.length == 0) return setError({ code: 5, message: "Location not found." });
 
-    setGeoLocation(location[0].name + ", " + location[0].country);
+    const parsedResult = {
+      ...location[0],
+      html: location[0].name + ", " + location[0].country,
+    };
+
+    setGeoLocation(parsedResult);
   };
 
   const errorCallback = (error) => {
