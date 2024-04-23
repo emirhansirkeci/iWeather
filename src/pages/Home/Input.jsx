@@ -3,9 +3,7 @@ import loadingIcon from "../../assets/images/loading.svg";
 import { useEffect } from "react";
 import toast from "react-hot-toast";
 
-export default function Input(props) {
-  const { loading, setValue, inputRef, sendRequest, setShowSuggestions } = props;
-
+export default function Input({ loading, setValue, inputRef, sendRequest, setShowSuggestions }) {
   useEffect(() => {
     window.addEventListener("click", (e) =>
       setShowSuggestions(inputRef.current && inputRef.current.contains(e.target)),

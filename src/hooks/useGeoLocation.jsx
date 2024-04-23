@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { reverseGeocoding } from "../services/api/fetchGeo";
 
 export default function useGeoLocation() {
@@ -24,13 +24,9 @@ export default function useGeoLocation() {
     setError(error);
   };
 
-  const getLocation = () => {
+  const getGeoLocation = () => {
     navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
   };
 
-  useEffect(() => {
-    getLocation();
-  }, []);
-
-  return [geoLocation, getLocation, error];
+  return [geoLocation, getGeoLocation, error];
 }

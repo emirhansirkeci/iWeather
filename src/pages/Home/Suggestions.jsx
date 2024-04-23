@@ -1,14 +1,17 @@
 import "./Suggestions.css";
 
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import { getSuggestions } from "../../utils/getSuggestions";
 import useDebounce from "../../hooks/useDebounce";
 import useGeoLocation from "../../hooks/useGeoLocation";
 
-export default function Suggestions(props) {
-  const { value, sendRequest, showSuggestions, inputRef } = props;
-  const [geoLocation] = useGeoLocation();
+export default function Suggestions({ value, sendRequest, showSuggestions, inputRef }) {
+  const [geoLocation, getGeoLocation] = useGeoLocation();
   const debouncedValue = useDebounce(value);
+
+  useEffect(() => {
+    getGeoLocation();
+  }, []);
 
   const suggestions = useMemo(() => {
     if (!debouncedValue) return [];
