@@ -1,7 +1,7 @@
 import "./Input.css";
-import loadingIcon from "../../assets/images/loading.svg";
 import { useEffect } from "react";
 import toast from "react-hot-toast";
+import LoadingIcon from "../../components/LoadingIcon";
 
 export default function Input({ loading, setValue, inputRef, sendRequest, setShowSuggestions }) {
   useEffect(() => {
@@ -31,7 +31,7 @@ export default function Input({ loading, setValue, inputRef, sendRequest, setSho
         onKeyDown={handleKeyDown}
         ref={inputRef}
       />
-      {loading ? <img src={loadingIcon} /> : null}
+      {loading ? <LoadingIcon /> : null}
     </div>
   );
 }

@@ -1,0 +1,35 @@
+.geolocation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  bottom: 32px;
+  right: 32px;
+  gap: 12px;
+  cursor: pointer;
+  transition: all 0.1s ease;
+  user-select: none;
+}
+
+.geolocation-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 40px;
+  background-color: var(--gray-500);
+  width: 50px;
+  height: 50px;
+  transition: all 0.1s ease;
+}
+
+.geolocation p {
+  color: var(--gray-200);
+}
+
+.geolocation:hover p {
+  color: var(--blue-light);
+}
+
+.geolocation:hover {
+  transform: scale(1.1);
+}

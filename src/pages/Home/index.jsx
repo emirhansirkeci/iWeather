@@ -1,3 +1,4 @@
+import GeoLocation from "../../components/GeoLocation";
 import "./index.css";
 
 import Search from "./Search";
@@ -8,6 +9,7 @@ export default function Home() {
     <div className="home">
       <WelcomeMessage />
       <Search />
+      <GeoLocation />
     </div>
   );
 }
