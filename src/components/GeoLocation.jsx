@@ -33,7 +33,7 @@ export default function GeoLocation() {
 
   return (
     <div className="geolocation" onClick={handleGeoLocation}>
-      <p className="text-md">Get the forecast for my location</p>
+      <p className="text-md">Find my location</p>
       <div className="geolocation-icon">
         {loading ? <LoadingIcon /> : <img src={svg} width="32px" />}
       </div>

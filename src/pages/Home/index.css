@@ -1,3 +1,9 @@
 .home {
-  margin-top: 25lvh;
+  margin-top: 16vh;
+}
+
+@media screen and (min-height: 750px) {
+  .home {
+    margin-top: 25vh;
+  }
 }
