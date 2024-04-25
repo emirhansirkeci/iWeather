@@ -7,7 +7,6 @@ export default function useGeoLocation() {
   const [loading, setLoading] = useState(false);
 
   const successCallback = async (position) => {
-    setLoading(true);
     try {
       const location = await reverseGeocoding(position.coords.latitude, position.coords.longitude);
 
@@ -20,8 +19,6 @@ export default function useGeoLocation() {
     } catch (error) {
       console.error("Reverse geocoding error:", error);
       toast.error(error.message);
-    } finally {
-      setLoading(false);
     }
   };
 
@@ -31,6 +28,7 @@ export default function useGeoLocation() {
   };
 
   const getGeoLocation = () => {
+    setLoading(true);
     toast.dismiss();
     if (!navigator || !navigator?.geolocation) return toast.error("Geolocation is not supported.");
 
@@ -44,6 +42,7 @@ export default function useGeoLocation() {
         toast.error("User denied sharing location.");
       }
     });
+    setLoading(false);
   };
 
   return [geoLocation, getGeoLocation, loading];
