@@ -26,7 +26,7 @@ export default function GeoLocation() {
     <div className="geolocation" onClick={getGeoLocation}>
       <p className="text-md">Find my location</p>
       <div className="geolocation-icon">
-        {reqLoading ? <LoadingIcon /> : <img src={svg} width="32px" />}
+        {reqLoading || geoLoading ? <LoadingIcon /> : <img src={svg} width="32px" />}
       </div>
     </div>
   );

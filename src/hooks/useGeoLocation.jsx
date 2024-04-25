@@ -28,21 +28,23 @@ export default function useGeoLocation() {
   };
 
   const getGeoLocation = () => {
-    setLoading(true);
     toast.dismiss();
     if (!navigator || !navigator?.geolocation) return toast.error("Geolocation is not supported.");
 
-    navigator.permissions.query({ name: "geolocation" }).then(function (result) {
-      if (result.state === "granted") {
-        navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
-      } else if (result.state === "prompt") {
-        navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
-        toast.error("Permission needed to find your location forecast.");
-      } else if (result.state === "denied") {
-        toast.error("User denied sharing location.");
-      }
-    });
-    setLoading(false);
+    navigator.permissions
+      .query({ name: "geolocation" })
+      .then((result) => {
+        setLoading(true);
+        if (result.state === "granted") {
+          navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+        } else if (result.state === "prompt") {
+          navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+          toast.error("Permission needed to find your location forecast.");
+        } else if (result.state === "denied") {
+          toast.error("User denied sharing location.");
+        }
+      })
+      .finally(() => setLoading(false));
   };
 
   return [geoLocation, getGeoLocation, loading];
