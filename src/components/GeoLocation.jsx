@@ -7,8 +7,8 @@ import toast from "react-hot-toast";
 import LoadingIcon from "./LoadingIcon";
 
 export default function GeoLocation() {
-  const [geoLocation, getGeoLocation] = useGeoLocation();
-  const [sendRequest, loading, error] = useRequest();
+  const [geoLocation, getGeoLocation, isGeoError] = useGeoLocation();
+  const [sendRequest, loading, isReqError] = useRequest();
 
   const handleGeoLocation = () => {
     getGeoLocation();
@@ -28,8 +28,12 @@ export default function GeoLocation() {
   }, [geoLocation]);
 
   useEffect(() => {
-    if (error) toast.error("Something went wrong");
-  }, [error]);
+    if (isReqError) toast.error("Something went wrong");
+  }, [isReqError]);
+
+  useEffect(() => {
+    if (isGeoError) toast.error(isGeoError);
+  }, [isGeoError]);
 
   return (
     <div className="geolocation" onClick={handleGeoLocation}>
