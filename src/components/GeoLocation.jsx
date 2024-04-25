@@ -9,11 +9,24 @@ export default function GeoLocation() {
   const [geoLocation, getGeoLocation, geoLoading] = useGeoLocation();
   const [sendRequest, reqLoading] = useRequest();
 
+  useEffect(() => {
+    if (geoLocation) {
+      const coords = {
+        lat: geoLocation.lat,
+        lon: geoLocation.lon,
+      };
+
+      sendRequest({
+        coords,
+      });
+    }
+  }, [geoLocation]);
+
   return (
     <div className="geolocation" onClick={getGeoLocation}>
       <p className="text-md">Find my location</p>
       <div className="geolocation-icon">
-        {geoLoading ? <LoadingIcon /> : <img src={svg} width="32px" />}
+        {reqLoading || geoLoading ? <LoadingIcon /> : <img src={svg} width="32px" />}
       </div>
     </div>
   );
