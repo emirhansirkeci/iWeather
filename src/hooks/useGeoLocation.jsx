@@ -19,10 +19,13 @@ export default function useGeoLocation() {
     } catch (error) {
       console.error("Reverse geocoding error:", error);
       toast.error(error.message);
+    } finally {
+      setLoading(false);
     }
   };
 
   const errorCallback = (error) => {
+    setLoading(false);
     console.error("Error callback: ", error);
     toast.error("Something went wrong. You may have denied sharing your location.");
   };
@@ -32,19 +35,17 @@ export default function useGeoLocation() {
     if (!navigator || !navigator?.geolocation) return toast.error("Geolocation is not supported.");
 
     setLoading(true);
-    navigator.permissions
-      .query({ name: "geolocation" })
-      .then((result) => {
-        if (result.state === "granted") {
-          navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
-        } else if (result.state === "prompt") {
-          navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
-          toast.error("Permission needed to find your location forecast.");
-        } else if (result.state === "denied") {
-          toast.error("User denied sharing location.");
-        }
-      })
-      .finally(() => setLoading(false));
+    navigator.permissions.query({ name: "geolocation" }).then((result) => {
+      if (result.state === "granted") {
+        navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+      } else if (result.state === "prompt") {
+        navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+        toast.error("Permission needed to find your location forecast.");
+      } else if (result.state === "denied") {
+        toast.error("User denied sharing location.");
+        setLoading(false);
+      }
+    });
   };
 
   return [geoLocation, getGeoLocation, loading];
