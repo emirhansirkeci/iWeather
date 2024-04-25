@@ -5,6 +5,7 @@ import toast from "react-hot-toast";
 export default function useGeoLocation() {
   const [geoLocation, setGeoLocation] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [sendRequest, reqLoading] = useRequest();
 
   const successCallback = async (position) => {
     try {
@@ -15,7 +16,11 @@ export default function useGeoLocation() {
         html: location[0].name + ", " + location[0].country,
       };
 
-      setGeoLocation(parsedResult);
+      const coords = {
+        lat: parsedResult.lat,
+        lon: parsedResult.lon,
+      };
+      sendRequest(coords);
     } catch (error) {
       console.error("Reverse geocoding error:", error);
       toast.error(error.message);
