@@ -40,7 +40,7 @@ export default function useGeoLocation() {
         navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
       } else if (result.state === "prompt") {
         navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
-        toast.error("Permission needed to find your location forecast.");
+        // toast.error("Permission needed to find your location forecast.");
       } else if (result.state === "denied") {
         toast.error("User denied sharing location.");
         setLoading(false);
