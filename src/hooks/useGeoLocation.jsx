@@ -1,44 +1,50 @@
 import { useState } from "react";
 import { reverseGeocoding } from "../services/api/fetchGeo";
+import toast from "react-hot-toast";
 
 export default function useGeoLocation() {
   const [geoLocation, setGeoLocation] = useState(null);
-  const [error, setError] = useState();
-
-  if (!navigator || !navigator?.geolocation) return setError("Geolocation not supported.");
 
   const successCallback = async (position) => {
-    const location = await reverseGeocoding(position.coords.latitude, position.coords.longitude);
-    if (location.length == 0) return setError("Location not found.");
+    try {
+      const location = await reverseGeocoding(position.coords.latitude, position.coords.longitude);
 
-    const parsedResult = {
-      ...location[0],
-      html: location[0].name + ", " + location[0].country,
-    };
+      if (location.length === 0) {
+        return toast.error("Location not found.");
+      }
 
-    setGeoLocation(parsedResult);
-  };
+      const parsedResult = {
+        ...location[0],
+        html: location[0].name + ", " + location[0].country,
+      };
 
-  const errorCallback = (error) => {
-    setError("Something went wrong");
-  };
-
-  const getGeoLocation = () => {
-    setError();
-    if (navigator.geolocation) {
-      navigator.permissions.query({ name: "geolocation" }).then(function (result) {
-        console.log(result);
-        if (result.state === "granted") {
-          navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
-        } else if (result.state === "prompt") {
-          navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
-          setError("Need your permission to find your location.");
-        } else if (result.state === "denied") {
-          setError("User denied to share its location.");
-        }
-      });
+      setGeoLocation(parsedResult);
+    } catch (error) {
+      console.error("Reverse geocoding error:", error);
+      toast.error(error.message);
     }
   };
 
-  return [geoLocation, getGeoLocation, error];
+  const errorCallback = (error) => {
+    console.error("Error callback: ", error);
+    toast.error("Something went wrong. You may have denied sharing your location.");
+  };
+
+  const getGeoLocation = () => {
+    toast.dismiss();
+    if (!navigator || !navigator?.geolocation) return toast.error("Geolocation is not supported.");
+
+    navigator.permissions.query({ name: "geolocation" }).then(function (result) {
+      if (result.state === "granted") {
+        navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+      } else if (result.state === "prompt") {
+        navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+        toast.error("Permission needed to find your location forecast.");
+      } else if (result.state === "denied") {
+        toast.error("User denied sharing location.");
+      }
+    });
+  };
+
+  return [geoLocation, getGeoLocation];
 }

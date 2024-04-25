@@ -13,12 +13,12 @@ export async function directGeocoding(location) {
   try {
     const response = await axios.get(url);
 
-    if (response.data.length == 0) throw Error("The specified location was not found");
+    if (response.data.length == 0) throw Error("The specified location was not found.");
 
     return response.data;
   } catch (error) {
     console.error("There was a problem with the axios operation:", error);
-    throw Error("The specified location was not found");
+    throw Error("Something went wrong while fetching location details.");
   }
 }
 
@@ -36,9 +36,11 @@ export async function reverseGeocoding(lat, lon) {
   try {
     const response = await axios.get(url);
 
+    if (response.data.length == 0) throw Error("The specified location was not found.");
+
     return response.data;
   } catch (error) {
     console.error("There was a problem with the axios operation:", error);
-    throw Error("Location could not be detected automatically.");
+    throw Error("Something went wrong while fetching location details.");
   }
 }

@@ -23,6 +23,6 @@ export async function fetchWeather(coordinates) {
     return response.data;
   } catch (error) {
     console.error("There was a problem with the axios operation:", error);
-    throw Error("No weather forecasts were found for the specified location");
+    throw Error("No weather forecasts were found for the specified location.");
   }
 }

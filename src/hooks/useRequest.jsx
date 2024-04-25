@@ -2,13 +2,14 @@ import { useState } from "react";
 import { directGeocoding } from "../services/api/fetchGeo";
 import { fetchWeather } from "../services/api/fetchWeather";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 export default function useRequest() {
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
   const navigate = useNavigate();
 
   const sendRequest = async ({ location, coords }) => {
+    toast.dismiss();
     setLoading(true);
 
     try {
@@ -25,11 +26,11 @@ export default function useRequest() {
         state: { weatherData },
       });
     } catch (error) {
-      setError(error);
+      toast.error(error.message);
     } finally {
       setLoading(false);
     }
   };
 
-  return [sendRequest, loading, error];
+  return [sendRequest, loading];
 }

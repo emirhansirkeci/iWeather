@@ -1,18 +1,13 @@
-import { useEffect } from "react";
+import "./GeoLocation.css";
 import svg from "../assets/location.svg";
+import { useEffect } from "react";
 import useGeoLocation from "../hooks/useGeoLocation";
 import useRequest from "../hooks/useRequest";
-import "./GeoLocation.css";
-import toast from "react-hot-toast";
 import LoadingIcon from "./LoadingIcon";
 
 export default function GeoLocation() {
-  const [geoLocation, getGeoLocation, isGeoError] = useGeoLocation();
-  const [sendRequest, loading, isReqError] = useRequest();
-
-  const handleGeoLocation = () => {
-    getGeoLocation();
-  };
+  const [geoLocation, getGeoLocation] = useGeoLocation();
+  const [sendRequest, loading] = useRequest();
 
   useEffect(() => {
     if (geoLocation) {
@@ -27,15 +22,8 @@ export default function GeoLocation() {
     }
   }, [geoLocation]);
 
-  useEffect(() => {
-    if (isReqError || isGeoError) {
-      toast.dismiss();
-      toast.error("Something went wrong with your location.");
-    }
-  }, [isReqError, isGeoError]);
-
   return (
-    <div className="geolocation" onClick={handleGeoLocation}>
+    <div className="geolocation" onClick={getGeoLocation}>
       <p className="text-md">Find my location</p>
       <div className="geolocation-icon">
         {loading ? <LoadingIcon /> : <img src={svg} width="32px" />}
