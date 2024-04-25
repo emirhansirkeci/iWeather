@@ -20,6 +20,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
             color: "var(--white)",
             padding: "20px",
           },
+          duration: 2000,
         }}
       />
     </BrowserRouter>
