@@ -4,8 +4,10 @@ import toast from "react-hot-toast";
 
 export default function useGeoLocation() {
   const [geoLocation, setGeoLocation] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const successCallback = async (position) => {
+    setLoading(true);
     try {
       const location = await reverseGeocoding(position.coords.latitude, position.coords.longitude);
 
@@ -18,6 +20,8 @@ export default function useGeoLocation() {
     } catch (error) {
       console.error("Reverse geocoding error:", error);
       toast.error(error.message);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -42,5 +46,5 @@ export default function useGeoLocation() {
     });
   };
 
-  return [geoLocation, getGeoLocation];
+  return [geoLocation, getGeoLocation, loading];
 }

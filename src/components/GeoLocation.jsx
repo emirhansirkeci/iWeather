@@ -6,8 +6,8 @@ import useRequest from "../hooks/useRequest";
 import LoadingIcon from "./LoadingIcon";
 
 export default function GeoLocation() {
-  const [geoLocation, getGeoLocation] = useGeoLocation();
-  const [sendRequest, loading] = useRequest();
+  const [geoLocation, getGeoLocation, geoLoading] = useGeoLocation();
+  const [sendRequest, reqLoading] = useRequest();
 
   useEffect(() => {
     if (geoLocation) {
@@ -26,7 +26,7 @@ export default function GeoLocation() {
     <div className="geolocation" onClick={getGeoLocation}>
       <p className="text-md">Find my location</p>
       <div className="geolocation-icon">
-        {loading ? <LoadingIcon /> : <img src={svg} width="32px" />}
+        {reqLoading || geoLoading ? <LoadingIcon /> : <img src={svg} width="32px" />}
       </div>
     </div>
   );
