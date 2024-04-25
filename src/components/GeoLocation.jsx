@@ -1,32 +1,64 @@
 import "./GeoLocation.css";
 import svg from "../assets/location.svg";
-import { useEffect } from "react";
-import useGeoLocation from "../hooks/useGeoLocation";
-import useRequest from "../hooks/useRequest";
 import LoadingIcon from "./LoadingIcon";
+import useRequest from "../hooks/useRequest";
+import toast from "react-hot-toast";
+import { useState } from "react";
+import { reverseGeocoding } from "../services/api/fetchGeo";
 
 export default function GeoLocation() {
-  const [geoLocation, getGeoLocation, geoLoading] = useGeoLocation();
-  const [sendRequest, reqLoading] = useRequest();
+  const [isLoading, setIsLoading] = useState(false);
+  const [sendRequest] = useRequest();
 
-  useEffect(() => {
-    if (geoLocation) {
-      const coords = {
-        lat: geoLocation.lat,
-        lon: geoLocation.lon,
-      };
+  const successCallback = async (position) => {
+    try {
+      const location = await reverseGeocoding(position.coords.latitude, position.coords.longitude);
 
       sendRequest({
-        coords,
+        coords: {
+          lat: location[0].lat,
+          lon: location[0].lon,
+        },
       });
+    } catch (error) {
+      console.error("Reverse geocoding error:", error);
+      toast.error(error.message);
+    } finally {
+      setIsLoading(false);
     }
-  }, [geoLocation]);
+  };
+
+  const errorCallback = (error) => {
+    console.error("Error callback: ", error);
+    toast.error("Something went wrong. You may have denied sharing your location.");
+    setIsLoading(false);
+  };
+
+  const getGeoLocation = async () => {
+    toast.dismiss();
+    setIsLoading(true);
+
+    try {
+      const result = await navigator.permissions.query({ name: "geolocation" });
+
+      if (result.state === "granted" || result.state === "prompt") {
+        navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+      } else if (result.state === "denied") {
+        toast.error("User denied sharing location.");
+        setIsLoading(false);
+      }
+    } catch (e) {
+      console.error("geoLocation - Permissions Query Error: ", e);
+      toast.error("Something went wrong.");
+      setIsLoading(false);
+    }
+  };
 
   return (
     <div className="geolocation" onClick={getGeoLocation}>
       <p className="text-md">Find my location</p>
       <div className="geolocation-icon">
-        {reqLoading || geoLoading ? <LoadingIcon /> : <img src={svg} width="32px" />}
+        {isLoading ? <LoadingIcon /> : <img src={svg} width="32px" />}
       </div>
     </div>
   );
