@@ -28,12 +28,11 @@ export default function GeoLocation() {
   }, [geoLocation]);
 
   useEffect(() => {
-    if (isReqError) toast.error("Something went wrong");
-  }, [isReqError]);
-
-  useEffect(() => {
-    if (isGeoError) toast.error(isGeoError);
-  }, [isGeoError]);
+    if (isReqError || isGeoError) {
+      toast.dismiss();
+      toast.error("Something went wrong with your location.");
+    }
+  }, [isReqError, isGeoError]);
 
   return (
     <div className="geolocation" onClick={handleGeoLocation}>
