@@ -9,10 +9,6 @@ export default function useGeoLocation() {
     try {
       const location = await reverseGeocoding(position.coords.latitude, position.coords.longitude);
 
-      if (location.length === 0) {
-        return toast.error("Location not found.");
-      }
-
       const parsedResult = {
         ...location[0],
         html: location[0].name + ", " + location[0].country,
