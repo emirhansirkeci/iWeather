@@ -44,7 +44,9 @@ export default function GeoLocation() {
       if (result.state === "granted" || result.state === "prompt") {
         navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
       } else if (result.state === "denied") {
-        toast.error("User denied sharing location.");
+        toast.error(
+          "Permission denied to access your location. Please allow site access to your location from the browser settings.",
+        );
         setIsLoading(false);
       }
     } catch (e) {
