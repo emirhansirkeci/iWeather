@@ -31,10 +31,10 @@ export default function useGeoLocation() {
     toast.dismiss();
     if (!navigator || !navigator?.geolocation) return toast.error("Geolocation is not supported.");
 
+    setLoading(true);
     navigator.permissions
       .query({ name: "geolocation" })
       .then((result) => {
-        setLoading(true);
         if (result.state === "granted") {
           navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
         } else if (result.state === "prompt") {
