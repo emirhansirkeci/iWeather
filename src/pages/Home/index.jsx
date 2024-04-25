@@ -1,6 +1,6 @@
-import GeoLocation from "../../components/GeoLocation";
 import "./index.css";
 
+import GeoLocation from "@components/GeoLocation";
 import Search from "./Search";
 import WelcomeMessage from "./WelcomeMessage";
 

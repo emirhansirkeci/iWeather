@@ -1,8 +1,9 @@
-import useRequest from "../../hooks/useRequest";
 import "./index.css";
+
+import { useState, useRef } from "react";
+import useRequest from "@hooks/useRequest";
 import Input from "./Input";
 import Suggestions from "./Suggestions";
-import { useState, useRef } from "react";
 
 export default function Search() {
   const [showSuggestions, setShowSuggestions] = useState(false);

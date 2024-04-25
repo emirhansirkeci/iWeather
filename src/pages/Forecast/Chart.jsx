@@ -1,9 +1,10 @@
 import "./Chart.css";
+
 import { XAxis, YAxis, Tooltip, Legend, AreaChart, Area, ResponsiveContainer } from "recharts";
 import { useEffect, useState } from "react";
-import { toDayName } from "../../utils/date";
-import CustomTooltip from "../../components/CustomTooltip";
-import Button from "../../components/Button";
+import { toDayName } from "@utils/date";
+import CustomTooltip from "@components/CustomTooltip";
+import Button from "@components/Button";
 
 export default function Chart({ currentDay }) {
   const [data, setData] = useState([]);

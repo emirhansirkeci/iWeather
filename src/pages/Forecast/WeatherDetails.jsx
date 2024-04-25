@@ -1,5 +1,6 @@
 import "./WeatherDetails.css";
-import { phosphorIcons } from "../../utils/availableAssets";
+
+import { phosphorIcons } from "@utils/availableAssets";
 
 function Detail({ name, icon, value }) {
   return (

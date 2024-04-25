@@ -1,10 +1,11 @@
 import "./GeoLocation.css";
-import svg from "../assets/location.svg";
-import LoadingIcon from "./LoadingIcon";
-import useRequest from "../hooks/useRequest";
+
 import toast from "react-hot-toast";
 import { useState } from "react";
-import { reverseGeocoding } from "../services/api/fetchGeo";
+import LoadingIcon from "./LoadingIcon";
+import svg from "@assets/location.svg";
+import useRequest from "@hooks/useRequest";
+import { reverseGeocoding } from "@services/api/fetchGeo";
 
 export default function GeoLocation() {
   const [isLoading, setIsLoading] = useState(false);

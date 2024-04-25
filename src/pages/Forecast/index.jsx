@@ -1,12 +1,12 @@
 import "./index.css";
-import { WeatherDetails } from "./WeatherDetails";
-import Card from "../../components/Card";
-import ForecastHero from "./Hero";
-import NextDays from "./NextDays";
 
 import { useLocation, Navigate } from "react-router-dom";
+import { WeatherDetails } from "./WeatherDetails";
+import Card from "@components/Card";
+import NextDays from "./NextDays";
+import ForecastHero from "./Hero";
 import Chart from "./Chart";
-import useWeatherData from "../../hooks/useWeatherData";
+import useWeatherData from "@hooks/useWeatherData";
 
 export default function Forecast() {
   const data = useLocation();

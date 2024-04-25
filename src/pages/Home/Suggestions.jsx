@@ -1,8 +1,8 @@
 import "./Suggestions.css";
 
 import { useMemo } from "react";
-import { getSuggestions } from "../../utils/getSuggestions";
-import useDebounce from "../../hooks/useDebounce";
+import { getSuggestions } from "@utils/getSuggestions";
+import useDebounce from "@hooks/useDebounce";
 
 export default function Suggestions({ value, sendRequest, showSuggestions, inputRef }) {
   const debouncedValue = useDebounce(value);

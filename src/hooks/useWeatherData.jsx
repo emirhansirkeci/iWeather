@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { toLongDate } from "../utils/date";
-import { addWeatherAssets } from "../utils/addWeatherAssets";
+import { toLongDate } from "@utils/date";
+import { addWeatherAssets } from "@utils/addWeatherAssets";
 
 export default function useWeatherData(weatherData) {
   const location = weatherData.location.name + ", " + weatherData.location.country;

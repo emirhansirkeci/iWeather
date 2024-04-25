@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { directGeocoding } from "../services/api/fetchGeo";
-import { fetchWeather } from "../services/api/fetchWeather";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import { directGeocoding } from "@services/api/fetchGeo";
+import { fetchWeather } from "@services/api/fetchWeather";
 
 export default function useRequest() {
   const [loading, setLoading] = useState(false);

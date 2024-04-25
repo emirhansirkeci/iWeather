@@ -1,5 +1,6 @@
 import "./NextDays.css";
-import { toShortDate } from "../../utils/date";
+
+import { toShortDate } from "@utils/date";
 
 export default function NextDays({ days, currentDay, setCurrentDay }) {
   return (
