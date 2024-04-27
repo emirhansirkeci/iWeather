@@ -10,7 +10,7 @@ import toast from "react-hot-toast";
 export default function index() {
   const [bookmarks, setBookmarks] = useState([]);
   const { getBookmarks, deleteLocation } = useBookmarks();
-  const [sendRequest, loading] = useRequest();
+  const [sendRequest] = useRequest();
 
   const initialize = async () => {
     const result = await getBookmarks();
@@ -61,7 +61,7 @@ export default function index() {
               </div>
             ))}
 
-            {bookmarks?.length == 0 && (
+            {(bookmarks?.length == 0 || !bookmarks) && (
               <p className="bookmark-empty text-sm">Your bookmarks are empty for now...</p>
             )}
           </div>
