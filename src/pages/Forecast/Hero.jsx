@@ -1,6 +1,7 @@
+import Save from "../../components/Save";
 import "./Hero.css";
 
-export default function ForecastHero({ location, currentDay, currentDate }) {
+export default function ForecastHero({ location, currentDay, currentDate, coords }) {
   return (
     <div
       className="hero"
@@ -30,6 +31,10 @@ export default function ForecastHero({ location, currentDay, currentDate }) {
             backgroundImage: `url("${currentDay.weatherIcon}")`,
           }}
         ></div>
+      </div>
+
+      <div className="save-button">
+        <Save coords={coords} location={location} />
       </div>
     </div>
   );

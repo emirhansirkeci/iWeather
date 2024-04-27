@@ -7,3 +7,21 @@
     margin-top: 25vh;
   }
 }
+
+.quick-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  bottom: 32px;
+  right: 16px;
+  gap: 12px;
+}
+
+@media screen and (max-width: 600px) {
+  .quick-buttons {
+    right: 8px;
+    bottom: 16px;
+  }
+}

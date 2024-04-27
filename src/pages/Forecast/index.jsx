@@ -16,12 +16,18 @@ export default function Forecast() {
   }
 
   const weatherData = data.state.weatherData;
-  const [location, days, currentDay, setCurrentDay, currentDate] = useWeatherData(weatherData);
+  const [location, days, currentDay, setCurrentDay, currentDate, coords] =
+    useWeatherData(weatherData);
 
   return (
     <div className="forecast-wrapper">
       <Card>
-        <ForecastHero location={location} currentDay={currentDay} currentDate={currentDate} />
+        <ForecastHero
+          location={location}
+          currentDay={currentDay}
+          currentDate={currentDate}
+          coords={coords}
+        />
       </Card>
 
       <Card>

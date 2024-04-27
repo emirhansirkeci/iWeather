@@ -1,14 +1,15 @@
-.geolocation {
+.saved-locations {
   width: 175px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 12px;
   cursor: pointer;
   transition: all 0.1s ease;
   user-select: none;
 }
 
-.geolocation-icon {
+.saved-locations-icon {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -19,14 +20,14 @@
   transition: all 0.1s ease;
 }
 
-.geolocation p {
+.saved-locations p {
   color: var(--gray-200);
 }
 
-.geolocation:hover p {
+.saved-locations:hover p {
   color: var(--blue-light);
 }
 
-.geolocation:hover {
+.saved-locations:hover {
   transform: scale(1.1);
 }

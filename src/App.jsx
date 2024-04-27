@@ -5,6 +5,7 @@ import { Routes, Route, Link } from "react-router-dom";
 
 import Home from "./pages/Home";
 import Forecast from "./pages/Forecast";
+import Bookmarks from "./pages/Bookmarks";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/forecast" element={<Forecast />} />
+        <Route path="/bookmarks" element={<Bookmarks />} />
         <Route path="*" element={<Home />} />
       </Routes>
     </div>

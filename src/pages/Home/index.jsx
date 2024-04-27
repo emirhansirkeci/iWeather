@@ -1,5 +1,6 @@
 import "./index.css";
 
+import SavedLocations from "@components/SavedLocations";
 import GeoLocation from "@components/GeoLocation";
 import Search from "./Search";
 import WelcomeMessage from "./WelcomeMessage";
@@ -9,7 +10,10 @@ export default function Home() {
     <div className="home">
       <WelcomeMessage />
       <Search />
-      <GeoLocation />
+      <div className="quick-buttons">
+        <GeoLocation />
+        <SavedLocations />
+      </div>
     </div>
   );
 }
