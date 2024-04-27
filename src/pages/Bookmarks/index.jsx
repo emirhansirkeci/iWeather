@@ -61,7 +61,7 @@ export default function index() {
               </div>
             ))}
 
-            {bookmarks.length == 0 && (
+            {bookmarks?.length == 0 && (
               <p className="bookmark-empty text-sm">Your bookmarks are empty for now...</p>
             )}
           </div>
