@@ -7,7 +7,7 @@
     <a href="https://github.com/React-Staj-2024/staj-2024-assesment"><img alt="GitHub" src="https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white" width="90px" target="_blank"/></a>
     <br>
     <br>
-    <img src="screenshot.png">
+    <img src="screenshots.png">
 </div>
 
 ## Environment Variables
