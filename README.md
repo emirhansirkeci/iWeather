@@ -16,8 +16,8 @@ Environment variables must be set for the application to run properly.
 First, copy the `.env.example` file and paste it as `.env.local`.
 Then, obtain API keys from the following websites:
 
-1. [Openweathermap](https://openweathermap.org/) helps find the user's location accurately. See details at [Geocoding API](https://openweathermap.org/api/geocoding-api).
-2. [Weatherapi](https://www.weatherapi.com/) provides weather forecasts and current conditions based on the given latitude and longitude coordinates.
+1. **VITE_WEATHER_API_KEY:** [Weatherapi](https://www.weatherapi.com/) provides weather forecasts and current conditions based on the given latitude and longitude coordinates.
+2. **VITE_OPENWEATHER_API_KEY:** [Openweathermap](https://openweathermap.org/) helps find the user's location accurately. See details at [Geocoding API](https://openweathermap.org/api/geocoding-api).
 
 ## Installation
 
