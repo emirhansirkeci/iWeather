@@ -6,6 +6,7 @@ import svg from "@assets/delete.svg";
 import Card from "@components/Card";
 import useRequest from "@hooks/useRequest";
 import toast from "react-hot-toast";
+import { NavLink } from "react-router-dom";
 
 export default function index() {
   const [bookmarks, setBookmarks] = useState([]);
@@ -67,6 +68,11 @@ export default function index() {
           </div>
         </div>
       </Card>
+      <NavLink to="/" style={{ textDecoration: "none" }}>
+        <div className="bookmark-link">
+          <p className="text-sm ">Go back to the home page</p>
+        </div>
+      </NavLink>
     </div>
   );
 }

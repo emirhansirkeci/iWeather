@@ -73,6 +73,19 @@
   color: var(--gray-400);
 }
 
+.bookmark-link {
+  padding: 16px;
+  margin-top: 32px;
+  text-align: center;
+  color: var(--gray-200);
+  text-decoration: none;
+  border: none;
+}
+
+.bookmark-link:hover {
+  color: var(--blue-light);
+}
+
 @media screen and (max-width: 600px) {
   .bookmarks {
     max-width: 85vw;
