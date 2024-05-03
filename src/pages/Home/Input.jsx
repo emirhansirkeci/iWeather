@@ -27,6 +27,7 @@ export default function Input({ loading, setValue, inputRef, sendRequest, setSho
   return (
     <div className="search-location">
       <input
+        spellCheck="false"
         placeholder="Search location"
         onChange={(e) => setValue(e.target.value)}
         onKeyDown={handleKeyDown}
